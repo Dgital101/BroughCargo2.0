@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import { useParams } from "react-router-dom";
@@ -10,6 +10,7 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { getError } from "../utils";
 import { Helmet } from "react-helmet-async";
+import { Store } from "../Store";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -47,6 +48,25 @@ function ProductScreen() {
     };
     fetchData();
   }, [slug]);
+  const { state, dispatch: cxtDispatch } = useContext(Store);
+  const { cart } = state;
+  const addToCartHandler = async () => {
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
+
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    const { data } = await axios.get(`/api/products/${product._id}`);
+
+    if (data.countInStock < quantity) {
+      window.alert("Sorry, Product out of stock");
+      return;
+    }
+
+    cxtDispatch({
+      type: "CART_ADD_ITEM",
+      payload: { ...product, quantity: quantity },
+    });
+  };
   return loading ? (
     <LoadingBox />
   ) : error ? (
@@ -118,7 +138,7 @@ function ProductScreen() {
               <small>Ships in 2-5 days</small>
             </Card.Text>
 
-            <div className="cart2">
+            <div className="cart2" onClick={addToCartHandler}>
               <small>
                 <i className="fa fa-shopping-cart" aria-hidden="true"></i> ADD
                 TO CART{" "}

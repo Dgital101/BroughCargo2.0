@@ -63,6 +63,7 @@ header {
   justify-content: center;
   padding-top: 5%;
   padding-bottom: 5%;
+  cursor: pointer;
   /* max-width: 150px; */
 }
 
@@ -95,7 +96,7 @@ a {
 
 .container {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 .container1 {
   display: flex;
@@ -139,6 +140,10 @@ a {
   max-width: 90%;
 }
 
+.cart2 :hover {
+  color: #ffc000;
+}
+
 .small-img {
   max-width: 5em;
   max-height: 5em;
@@ -163,4 +168,14 @@ a {
 .badge {
   width: 50%;
   border-radius: 50px;
+}
+
+.mt-3 {
+  transform: translate(-100%);
+}
+
+.numCart {
+  border: 1px, solid black;
+  color: #fef9f3;
+  display: none;
 }

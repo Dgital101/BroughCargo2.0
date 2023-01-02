@@ -1,6 +1,7 @@
 const data = {
   products: [
     {
+      _id: "1",
       name: '32" LG TV',
       slug: "lg-tv",
       category: "TVs",
@@ -14,6 +15,7 @@ const data = {
     },
 
     {
+      _id: "2",
       name: "2kg Rice",
       slug: "rice",
       category: "Rice",
@@ -27,6 +29,7 @@ const data = {
     },
 
     {
+      _id: "3",
       name: "Gaming Chair",
       slug: "gaming-chair",
       category: "Chairs",
@@ -40,6 +43,7 @@ const data = {
     },
 
     {
+      _id: "4",
       name: "Core i5 HP Laptop",
       slug: "hp-laptop",
       category: "Laptops",
