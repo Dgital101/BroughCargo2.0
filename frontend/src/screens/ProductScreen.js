@@ -9,6 +9,7 @@ import Badge from "react-bootstrap/Badge";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { getError } from "../utils";
+import { Helmet } from "react-helmet-async";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -54,6 +55,9 @@ function ProductScreen() {
     <div>
       <Row>
         <Col md={6}>
+          <Helmet>
+            <title>{product.name}</title>
+          </Helmet>
           <img
             className="prod2-img"
             src={product.Image}
