@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useReducer } from "react";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Rating from "../components/Rating";
 import Badge from "react-bootstrap/Badge";
@@ -26,6 +26,7 @@ const reducer = (state, action) => {
 };
 
 function ProductScreen() {
+  const navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
 
@@ -61,11 +62,14 @@ function ProductScreen() {
       window.alert("Sorry, Product out of stock");
       return;
     }
-
+    console.log("print sjjn");
     cxtDispatch({
       type: "CART_ADD_ITEM",
-      payload: { ...product, quantity: quantity },
+      payload: { ...product, quantity },
     });
+    // navigate("/cart");
+
+    // window.alert("Proceed to checkout or continue shopping ");
   };
   return loading ? (
     <LoadingBox />
@@ -78,6 +82,7 @@ function ProductScreen() {
           <Helmet>
             <title>{product.name}</title>
           </Helmet>
+
           <img
             className="prod2-img"
             src={product.Image}

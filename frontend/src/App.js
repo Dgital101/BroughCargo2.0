@@ -10,6 +10,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useContext } from "react";
 import { Store } from "./Store";
 import { Link } from "react-router-dom";
+import CartScreen from "./screens/CartScreen";
+import SigninScreen from "./screens/SigninScreen";
 function App() {
   const { state } = useContext(Store);
   const { cart } = state;
@@ -60,6 +62,8 @@ function App() {
         <main>
           <Routes>
             <Route path="/product/:slug" element={<ProductScreen />} />
+            <Route path="/cart" element={<CartScreen />} />
+            <Route path="/signin" element={<SigninScreen />} />
             <Route path="/" element={<HomeScreen />} />
           </Routes>
           <footer></footer>

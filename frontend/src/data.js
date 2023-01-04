@@ -6,7 +6,7 @@ const data = {
       category: "TVs",
       Image: "images/products/TV.jpeg",
       price: 2500,
-      countInStock: 10,
+      countInStock: 0,
       brand: "Nike",
       rating: 4.5,
       numReviews: "High Quality TV with 6 months warrant ",

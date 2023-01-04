@@ -20,7 +20,7 @@ const data = {
       slug: "rice",
       category: "Rice",
       Image: "images/products/rice.jpeg",
-      price: 35.99,
+      price: 35,
       countInStock: 100,
       brand: "Basmat",
       rating: 1.5,

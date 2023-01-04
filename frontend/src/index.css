@@ -143,6 +143,12 @@ a {
 .cart2 :hover {
   color: #ffc000;
 }
+.cart2 :hover {
+  color: #ffc000;
+}
+.cart :hover {
+  color: #ffc000;
+}
 
 .small-img {
   max-width: 5em;
@@ -178,4 +184,12 @@ a {
   border: 1px, solid black;
   color: #fef9f3;
   display: none;
+}
+
+.img-thumbnail {
+  height: 80px;
+}
+
+.small-container {
+  max-width: 600px;
 }
