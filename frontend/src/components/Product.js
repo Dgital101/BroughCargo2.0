@@ -32,7 +32,7 @@ function Product(props) {
     });
   };
   return (
-    <div className="container">
+    <div className="container ">
       <Card className="card">
         <div className="wishlist">
           <i className={`fa ${color}`} onClick={() => setColor("fa-heart")}></i>

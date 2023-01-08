@@ -1,7 +1,22 @@
+import bcrypt from "bcryptjs";
 const data = {
+  users: [
+    {
+      name: "Isaiah",
+      email: "admin.example.com",
+      password: bcrypt.hashSync("123456"),
+      isAdmin: true,
+    },
+    {
+      name: "Lethabo",
+      email: "user.example.com",
+      password: bcrypt.hashSync("123456"),
+      isAdmin: false,
+    },
+  ],
   products: [
     {
-      _id: "1",
+      // _id: "1",
       name: '32" LG TV',
       slug: "lg-tv",
       category: "TVs",
@@ -15,7 +30,7 @@ const data = {
     },
 
     {
-      _id: "2",
+      // _id: "2",
       name: "2kg Rice",
       slug: "rice",
       category: "Rice",
@@ -29,7 +44,7 @@ const data = {
     },
 
     {
-      _id: "3",
+      // _id: "3",
       name: "Gaming Chair",
       slug: "gaming-chair",
       category: "Chairs",
@@ -43,7 +58,7 @@ const data = {
     },
 
     {
-      _id: "4",
+      // _id: "4",
       name: "Core i5 HP Laptop",
       slug: "hp-laptop",
       category: "Laptops",
