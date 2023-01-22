@@ -11,6 +11,7 @@ import MessageBox from "../components/MessageBox";
 import { getError } from "../utils";
 import { Helmet } from "react-helmet-async";
 import { Store } from "../Store";
+import Container from "react-bootstrap/esm/Container";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -76,9 +77,9 @@ function ProductScreen() {
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <div>
+    <Container fluid>
       <Row>
-        <Col md={6}>
+        <Col md={6} xs={3}>
           <Helmet>
             <title>{product.name}</title>
           </Helmet>
@@ -89,7 +90,7 @@ function ProductScreen() {
             alt={product.name}
           ></img>
 
-          <div className="container1">
+          <Container>
             <div>
               <img
                 className="small-img"
@@ -111,54 +112,53 @@ function ProductScreen() {
                 alt={product.name}
               ></img>
             </div>
-            <div>
-              <img
-                className="small-img"
-                src={product.Image}
-                alt={product.name}
-              ></img>
-            </div>
-          </div>
+          </Container>
         </Col>
         <Col md={4}>
-          <Card className="card2">
-            <div className="prod-name2">{product.name}</div>
-            <Rating rating={product.rating} numReviews={product.numReviews} />
-            <Card.Subtitle>Description</Card.Subtitle>
-            <Card.Text style={{ textAlign: "justify" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam.
-            </Card.Text>
-            <Card.Text className="prod-price">R{product.price}</Card.Text>
-            {product.countInStock > 0 ? (
-              <Badge bg="success" className="badge">
-                In Stock
-              </Badge>
-            ) : (
-              <Badge bg="danger">Out of Stock</Badge>
-            )}
-            <Card.Text style={{ color: "#D9D9D9" }}>
-              {" "}
-              <small>Ships in 2-5 days</small>
-            </Card.Text>
+          <Container fluid>
+            <Card style={{ padding: "1rem" }}>
+              <div className="prod-name2">{product.name}</div>
+              <Rating rating={product.rating} numReviews={product.numReviews} />
+              <Card.Subtitle>Description</Card.Subtitle>
+              <Card.Text style={{ textAlign: "justify" }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam.
+              </Card.Text>
+              <Card.Text className="prod-price">R{product.price}</Card.Text>
+              {product.countInStock > 0 ? (
+                <Badge bg="success" className="badge">
+                  In Stock
+                </Badge>
+              ) : (
+                <Badge bg="danger">Out of Stock</Badge>
+              )}
+              <Card.Text style={{ color: "#D9D9D9" }}>
+                {" "}
+                <small>Ships in 2-5 days</small>
+              </Card.Text>
 
-            <div className="cart2" onClick={addToCartHandler}>
-              <small>
-                <i className="fa fa-shopping-cart" aria-hidden="true"></i> ADD
-                TO CART{" "}
-              </small>
-            </div>
-            <div className="cart2">
-              <small>
-                <i className="fa fa-heart-o" aria-hidden="true"></i> ADD TO
-                WISHLIST{" "}
-              </small>
-            </div>
-          </Card>
+              <div className="cart2" onClick={addToCartHandler}>
+                <small>
+                  {" "}
+                  <i
+                    className="fa fa-shopping-cart fa-lg"
+                    aria-hidden="true"
+                  ></i>{" "}
+                  ADD TO CART{" "}
+                </small>
+              </div>
+              <div className="cart2">
+                <i className="fa fa-heart-o" aria-hidden="true">
+                  {" "}
+                </i>{" "}
+                <small>ADD TO WISHLIST </small>
+              </div>
+            </Card>
+          </Container>
         </Col>
       </Row>
-    </div>
+    </Container>
   );
 }
 

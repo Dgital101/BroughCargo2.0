@@ -5,6 +5,7 @@ import CheckoutSteps from "../components/CheckoutSteps";
 import Button from "react-bootstrap/Button";
 import { Store } from "../Store";
 import { useNavigate } from "react-router-dom";
+import Container from "react-bootstrap/esm/Container";
 
 export default function PaymentMethodScreen() {
   const navigate = useNavigate();
@@ -28,14 +29,14 @@ export default function PaymentMethodScreen() {
     navigate("/placeorder");
   };
   return (
-    <div>
+    <div style={{ padding: "2rem" }}>
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
-      <div className="container small-container">
-        <Helmet>
-          <title>Payment Method</title>
-        </Helmet>
 
-        <h1 className="my-3"> Payment Method</h1>
+      <Helmet>
+        <title>Payment Method</title>
+      </Helmet>
+      <Container className="  .d-flex align-items-center justify-content-center   flex-column">
+        <h1 style={{ marginTop: "2rem" }}> Payment Method</h1>
 
         <Form onSubmit={submitHandler}>
           <div className="mb-3">
@@ -62,7 +63,7 @@ export default function PaymentMethodScreen() {
             <Button type="submit">Continue</Button>
           </div>
         </Form>
-      </div>
+      </Container>
     </div>
   );
 }

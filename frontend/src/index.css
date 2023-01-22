@@ -15,8 +15,12 @@ header {
 
 .logo {
   position: relative;
-  width: 20vw;
-  height: 100%;
+  /* width: 20vw;
+  height: 100%; */
+  min-height: 3rem;
+  min-width: 6rem;
+  max-width: 10rem;
+  max-height: 4rem;
 }
 
 .products {
@@ -31,9 +35,10 @@ header {
 }
 
 .card-img-top {
-  width: 100%;
-  /* max-width: 150px; */
+  /* max-width: 20rem;
+  max-height: 10rem; */
   object-fit: cover;
+  padding: 1rem;
   /* max-height: 150px; */
 }
 
@@ -58,12 +63,14 @@ header {
   border: 1px #000 solid;
   /* margin-left: 25%; */
   margin-right: 12.5%;
-  border-radius: 25px;
+  border-radius: 2.5rem;
   display: flex;
   justify-content: center;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
   cursor: pointer;
+  font-size: 1rem;
+
   /* max-width: 150px; */
 }
 
@@ -76,10 +83,10 @@ header {
 }
 
 h1 {
-  display: flex;
-  margin-left: 10%;
   font-weight: 400;
   font-size: x-large;
+  /* transform: translate(-850%); */
+  padding-right: 55%;
 }
 
 a {
@@ -187,7 +194,7 @@ a {
 }
 
 .img-thumbnail {
-  height: 80px;
+  height: 4rem;
 }
 
 .small-container {
@@ -202,3 +209,61 @@ a {
   border-bottom: 0.2rem solid green;
   color: green;
 }
+
+.small-card {
+  width: 300px;
+  height: 200px;
+}
+
+.dropdown-toggle {
+  font-weight: bold;
+  color: #000;
+}
+
+.searchbar::placeholder {
+  color: #fef9f3;
+  font-weight: 700;
+  transform: translateX(5%);
+}
+
+.searchbar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.searchbar-container button {
+  margin-left: auto;
+}
+
+.full-width {
+  max-width: 90%;
+  overflow-x: scroll;
+}
+
+.full-width img {
+  max-width: 4rem;
+  max-height: 4rem;
+}
+.container::-webkit-scrollbar {
+  /* Hide scrollbar for Chrome, Safari, and Opera */
+  display: none;
+}
+
+.circle {
+  background-color: #fef9f3;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle i {
+  color: #000;
+  font-size: 1.5rem;
+}
+
+/* .fa-shopping-cart {
+  font-size: 40px;
+} */

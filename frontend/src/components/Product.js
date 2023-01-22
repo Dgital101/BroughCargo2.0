@@ -13,7 +13,7 @@ function Product(props) {
   const {
     cart: { cartItems },
   } = state;
-  const [color, setColor] = useState(" fa-heart-o");
+  const [color, setColor] = useState(" la-heart");
 
   const addToCartHandler = async (item) => {
     const existItem = cartItems.find((x) => x._id === product._id);
@@ -32,10 +32,14 @@ function Product(props) {
     });
   };
   return (
-    <div className="container ">
-      <Card className="card">
+    <Container className="d-flex  justify-content-center">
+      <Card>
         <div className="wishlist">
-          <i className={`fa ${color}`} onClick={() => setColor("fa-heart")}></i>
+          <i
+            className={`lar ${color}`}
+            onClick={() => setColor("fa-heart")}
+          ></i>
+          <i className="las la-heart"></i>
         </div>
         <Link to={`/product/${product.slug}`}>
           <img
@@ -46,27 +50,44 @@ function Product(props) {
         </Link>
         <Card.Body>
           <Link to={`/product/${product.slug}`}>
-            <Card.Title className="prod-name">{product.name}</Card.Title>
+            <Card.Title className="prod-name" style={{ minHeight: "2.2rem" }}>
+              {product.name}
+            </Card.Title>
           </Link>
           {/* <Rating rating={product.rating} numReviews={product.numReviews} /> */}
-          <Card.Text className="prod-price">
+          <Card.Text className="prod-price mb-5">
             <small>R{product.price}</small>
           </Card.Text>
           {product.countInStock === 0 ? (
-            <Button variant="light" disabled>
+            <Button
+              variant="light"
+              disabled
+              style={{ paddingTop: "0.1rem", paddingBottom: "0.1rem" }}
+            >
               {" "}
-              Sold Out
+              <small>Sold Out</small>
             </Button>
           ) : (
-            <div className="cart" onClick={() => addToCartHandler(product)}>
+            <div
+              className="cart d-flex align-items-end justify-content-center"
+              onClick={() => addToCartHandler(product)}
+              style={{ width: "100%" }}
+            >
               <small>
-                <i className="fa fa-shopping-cart" aria-hidden="true"></i> ADD{" "}
+                {" "}
+                <strong>
+                  <i
+                    className="fa fa-shopping-cart fa-lg"
+                    aria-hidden="true"
+                  ></i>{" "}
+                  ADD{" "}
+                </strong>
               </small>
             </div>
           )}
         </Card.Body>
       </Card>
-    </div>
+    </Container>
   );
 }
 

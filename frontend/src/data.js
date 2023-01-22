@@ -1,51 +1,84 @@
 const data = {
   products: [
     {
-      name: '32" LG TV',
-      slug: "lg-tv",
-      category: "TVs",
-      Image: "images/products/TV.jpeg",
-      price: 2500,
-      countInStock: 0,
-      brand: "Nike",
-      rating: 4.5,
-      numReviews: "High Quality TV with 6 months warrant ",
+      name: "Sale",
+      Image: "images/category/shopping-online.png",
     },
-
     {
-      name: "2kg Rice",
-      slug: "rice",
-      category: "Rice",
-      Image: "images/products/rice.jpeg",
-      price: 35.99,
-      countInStock: 100,
-      brand: "Basmat",
-      rating: 4.5,
-      numReviews: "High Quality TV with 6 months warrant ",
+      name: "Appliances",
+      Image: "images/category/electronics.png",
     },
-
     {
-      name: "Gaming Chair",
-      slug: "gaming-chair",
-      category: "Chairs",
-      Image: "images/products/gamingchair.jpeg",
-      price: 6000,
-      countInStock: 100,
-      brand: "Chiraira",
-      rating: 4.5,
-      numReviews: "High Quality TV with 6 months warrant ",
+      name: "Electronic Gadgets",
+      Image: "images/category/gadgets-2.png",
     },
-
     {
-      name: "Core i5 HP Laptop",
-      slug: "hp-laptop",
-      category: "Laptops",
-      Image: "images/products/laptop.jpeg",
-      price: 5000,
-      countInStock: 50,
-      brand: "HP",
-      rating: 4.5,
-      numReviews: "High Quality TV with 6 months warrant ",
+      name: "Groceries",
+      Image: "images/category/groceries.png",
+    },
+    {
+      name: "Liquor",
+      Image: "images/category/liquor.png",
+    },
+    {
+      name: "Food",
+      Image: "images/category/diet.png",
+    },
+    {
+      name: "Mobile Phones",
+      Image: "images/category/user-interface.png",
+    },
+    {
+      name: "Beauty & skin Care",
+      Image: "images/category/skin-care.png",
+    },
+    {
+      name: "Agriculture",
+      Image: "images/category/agriculture.png",
+    },
+    {
+      name: "Stationery & Books",
+      Image: "images/category/stationery.png",
+    },
+    {
+      name: "Sale",
+      Image: "images/category/shopping-online.png",
+    },
+    {
+      name: "Appliances",
+      Image: "images/category/electronics.png",
+    },
+    {
+      name: "Electronic Gadgets",
+      Image: "images/category/gadgets-2.png",
+    },
+    {
+      name: "Groceries",
+      Image: "images/category/groceries.png",
+    },
+    {
+      name: "Liquor",
+      Image: "images/category/liquor.png",
+    },
+    {
+      name: "Food",
+      Image: "images/category/diet.png",
+    },
+    {
+      name: "Mobile Phones",
+      Image: "images/category/user-interface.png",
+    },
+    {
+      name: "Beauty & skin Care",
+      Image: "images/category/skin-care.png",
+    },
+    {
+      name: "Agriculture",
+      Image: "images/category/agriculture.png",
+    },
+    {
+      name: "Stationery & Books",
+      Image: "images/category/stationery.png",
     },
   ],
 };
