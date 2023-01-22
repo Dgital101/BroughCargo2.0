@@ -71,8 +71,14 @@ function HomeScreen() {
         }}
         className="d-flex justify-content-center"
       >
-        {`Hello ${userInfo.name}, `}
-        Happy Shopping!
+        {userInfo ? (
+          <div>
+            {`Hello ${userInfo.name}, `}
+            Happy Shopping!
+          </div>
+        ) : (
+          "Happy Shopping"
+        )}
       </div>
       <Container className="d-flex full-width justify-content-start align-items-center mb-3">
         <div
