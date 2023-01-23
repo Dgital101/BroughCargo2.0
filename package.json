@@ -1,0 +1,21 @@
+{
+  "name": "project-commerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd backend && npm install && cd ../frontend && npm install --legacy-peer-deps && npm run build",
+    "start": "node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dgital101/BroughCargo2.0.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dgital101/BroughCargo2.0/issues"
+  },
+  "homepage": "https://github.com/Dgital101/BroughCargo2.0#readme"
+}
