@@ -218,7 +218,7 @@ function App() {
               <Form
                 className="d-flex align-items-center rounded"
                 style={{
-                  width: "25rem",
+                  width: "96%",
                   // position: "absolute",
                 }}
               >
