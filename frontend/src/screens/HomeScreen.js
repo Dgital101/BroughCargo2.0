@@ -63,37 +63,13 @@ function HomeScreen() {
       <Helmet>
         <title>Hot Picks</title>
       </Helmet>
-      <div
-        style={{
-          backgroundColor: "#D9D9D9",
-          transform: "translateY(-2rem)",
-          padding: "0.5rem",
-        }}
-        className="d-flex justify-content-center"
-      >
-        {userInfo ? (
-          <div>
-            {`Hello ${userInfo.name}, `}
-            Happy Shopping!
-          </div>
-        ) : (
-          "Happy Shopping"
-        )}
-      </div>
-      <Container className="d-flex full-width justify-content-start align-items-center mb-3">
-        <div
-          className="scroll-left"
-          style={{ marginLeft: "-4%", position: "fixed" }}
-        >
-          <div className="circle">
-            <i className="fas fa-arrow-left" onClick={() => scrollLeft()} />
-          </div>
-        </div>
+
+      <Container className="d-flex full-width justify-content-start align-items-center mb-3 mt-4">
         {data.products.map((product) => (
           <div
             className="cate"
             key={product.name}
-            style={{ marginLeft: "3rem" }}
+            style={{ marginLeft: "0rem", paddingRight: "2rem" }}
           >
             <a href={`/product/${product.slug}`}>
               <img src={product.Image} alt={product.name} />
@@ -112,14 +88,6 @@ function HomeScreen() {
             </div>
           </div>
         ))}
-        <div
-          className="scroll-right"
-          style={{ marginLeft: "80%", position: "absolute" }}
-        >
-          <div className="circle">
-            <i className="fas fa-arrow-right" onClick={() => scrollLeft()} />
-          </div>
-        </div>
       </Container>
 
       <Carousel className="mb-5">
