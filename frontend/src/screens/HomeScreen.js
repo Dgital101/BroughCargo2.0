@@ -90,7 +90,7 @@ function HomeScreen() {
         ))}
       </Container>
 
-      <Carousel className="mb-5">
+      <Carousel className="mb-5" controls={false}>
         <Carousel.Item interval={1500}>
           <img
             className="d-block w-100"
@@ -121,9 +121,12 @@ function HomeScreen() {
         </Carousel.Item>
       </Carousel>
 
-      <Container className="d-flex justify-content-end">
+      <Container
+        className="d-flex justify-content-start "
+        style={{ gap: "50%" }}
+      >
         {" "}
-        <h1> Hot Picks</h1>
+        <h4> Hot Picks</h4>
         <strong>
           <u>see all</u>
         </strong>

@@ -86,13 +86,34 @@ h6 {
   margin-left: 300px;
 }
 
+@media (min-width: 1199px) {
+  .cart-badge-container {
+    margin-left: 75%;
+  }
+}
+
 @media (max-width: 1199px) {
   #header {
     left: -300px;
   }
 
-  #main {
+  .main {
     margin-left: 0;
+  }
+
+  .logoCont {
+    order: 0;
+    margin-left: 1.2rem;
+  }
+
+  .logo {
+    width: auto;
+    /* left: -4rem; */
+  }
+
+  .cart-badge-container {
+    order: -1;
+    /* left: -5rem; */
   }
 }
 

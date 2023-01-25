@@ -54,8 +54,8 @@ function App() {
       <div className="d-flex flex-column tog">
         <ToastContainer position="bottom-center" limit={1} />
 
-        <Row style={{ paddingRight: "0rem" }}>
-          <Col md={4}>
+        <Row style={{ paddingRight: "0rem" }} className="no-gutters">
+          <Col md={4} className="no-gutters">
             <header
               id="header"
               style={{ minHeight: "100%", marginRight: "0rem" }}
@@ -68,12 +68,15 @@ function App() {
                     className="img-fluid rounded-circle"
                   />
 
-                  <h1
-                    className="text-light mb-3"
-                    style={{ fontSize: "1.5rem", marginBottom: "1rem" }}
+                  <h3
+                    className="text-light mb-3 d-flex justify-content-center"
+                    style={{
+                      fontSize: "1.5rem",
+                      marginBottom: "1rem",
+                    }}
                   >
-                    <a href="index.html">Hello Isaiah</a>
-                  </h1>
+                    Hello Isaiah
+                  </h3>
                   <div className="social-links text-center">
                     <a href="#" className="facebook">
                       <i className="bx bx-cart"></i>
@@ -157,16 +160,16 @@ function App() {
             </header>
           </Col>
 
-          <Col md={8} xs={12}>
+          <Col md={8} xs={12} sm={12} className="main">
             <main style={{ marginLeft: "" }}>
-              <div className="mb-3">
+              <div className="mb-3 ">
                 <i
                   className="bx bx-menu mobile-nav-toggle d-xl-none"
                   onClick={tog}
                 ></i>
               </div>
               <Container
-                className="d-flex flex-row mt-1"
+                className="d-flex flex-row mt-1 "
                 style={{ marginLeft: "0rem" }}
               >
                 <div
@@ -204,12 +207,16 @@ function App() {
                     </span>
                   )}
                 </div>
-                <LinkContainer to="/" style={{ marginLeft: "2rem" }}>
+                <LinkContainer
+                  to="/"
+                  style={{ order: -1 }}
+                  className="logoCont"
+                >
                   <Navbar.Brand>
                     <img
                       src="/images/logo.png"
                       alt="Description of image"
-                      className="logo"
+                      className="logo d-flex justify-content-center"
                     />
                   </Navbar.Brand>
                 </LinkContainer>

@@ -5,15 +5,7 @@ const data = {
       Image: "images/category/shopping-online.png",
       slug: "sale",
     },
-    {
-      name: "Appliances",
-      Image: "images/category/electronics.png",
-    },
-    {
-      name: "Electronic Gadgets",
-      Image: "images/category/gadgets-2.png",
-      slug: "elec",
-    },
+
     {
       name: "Groceries",
       Image: "images/category/groceries.png",
@@ -48,6 +40,11 @@ const data = {
       name: "Stationery & Books",
       Image: "images/category/stationery.png",
       slug: "books",
+    },
+    {
+      name: "Electronic Gadgets",
+      Image: "images/category/gadgets-2.png",
+      slug: "elec",
     },
   ],
 };
