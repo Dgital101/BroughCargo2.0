@@ -62,7 +62,7 @@ const data = {
       name: "Core i5 HP Laptop",
       slug: "hp-laptop",
       category: "Laptops",
-      Image: "images/products/laptop.jpeg",
+      Image: "images/products/Laptop.png",
       price: 5000,
       countInStock: 50,
       brand: "HP",

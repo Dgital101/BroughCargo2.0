@@ -77,88 +77,72 @@ function ProductScreen() {
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <Container fluid>
+    <div className="d-flex justify-content-end mt-5">
+      <Helmet>
+        <title>{product.name}</title>
+      </Helmet>
       <Row>
-        <Col md={6} xs={3}>
-          <Helmet>
-            <title>{product.name}</title>
-          </Helmet>
-
+        <Col
+          md={3}
+          xs={12}
+          sm={12}
+          className="prod-imgs d-flex justify-content-center"
+        >
           <img
-            className="prod2-img"
             src={product.Image}
             alt={product.name}
-          ></img>
-
-          <Container>
-            <div>
-              <img
-                className="small-img"
-                src={product.Image}
-                alt={product.name}
-              ></img>
-            </div>
-            <div>
-              <img
-                className="small-img"
-                src={product.Image}
-                alt={product.name}
-              ></img>
-            </div>
-            <div>
-              <img
-                className="small-img"
-                src={product.Image}
-                alt={product.name}
-              ></img>
-            </div>
-          </Container>
+            style={{ height: "90%" }}
+          />
         </Col>
-        <Col md={4}>
-          <Container fluid>
-            <Card style={{ padding: "1rem" }}>
-              <div className="prod-name2">{product.name}</div>
-              <Rating rating={product.rating} numReviews={product.numReviews} />
-              <Card.Subtitle>Description</Card.Subtitle>
-              <Card.Text style={{ textAlign: "justify" }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam.
-              </Card.Text>
-              <Card.Text className="prod-price">R{product.price}</Card.Text>
-              {product.countInStock > 0 ? (
-                <Badge bg="success" className="badge">
-                  In Stock
-                </Badge>
-              ) : (
-                <Badge bg="danger">Out of Stock</Badge>
-              )}
-              <Card.Text style={{ color: "#D9D9D9" }}>
-                {" "}
-                <small>Ships in 2-5 days</small>
-              </Card.Text>
+        <Col
+          md={4}
+          xs={8}
+          sm={8}
+          style={{ marginLeft: "30%" }}
+          className="d-flex justify-content-center"
+        >
+          <Card style={{ padding: "1rem" }}>
+            <div>{product.name}</div>
+            <Rating rating={product.rating} numReviews={product.numReviews} />
+            <Card.Subtitle>Description</Card.Subtitle>
+            <Card.Text style={{ textAlign: "justify" }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam.
+            </Card.Text>
+            <Card.Text className="prod-price">R{product.price}</Card.Text>
+            {product.countInStock > 0 ? (
+              <Badge bg="success" className="badge">
+                In Stock
+              </Badge>
+            ) : (
+              <Badge bg="danger">Out of Stock</Badge>
+            )}
+            <Card.Text style={{ color: "#D9D9D9" }}>
+              {" "}
+              <small>Ships in 2-5 days</small>
+            </Card.Text>
 
-              <div className="cart2" onClick={addToCartHandler}>
-                <small>
-                  {" "}
-                  <i
-                    className="fa fa-shopping-cart fa-lg"
-                    aria-hidden="true"
-                  ></i>{" "}
-                  ADD TO CART{" "}
-                </small>
-              </div>
-              <div className="cart2">
-                <i className="fa fa-heart-o" aria-hidden="true">
-                  {" "}
-                </i>{" "}
-                <small>ADD TO WISHLIST </small>
-              </div>
-            </Card>
-          </Container>
+            <div className="cart2" onClick={addToCartHandler}>
+              <small>
+                {" "}
+                <i
+                  className="fa fa-shopping-cart fa-lg"
+                  aria-hidden="true"
+                ></i>{" "}
+                ADD TO CART{" "}
+              </small>
+            </div>
+            <div className="cart2">
+              <i className="fa fa-heart-o" aria-hidden="true">
+                {" "}
+              </i>{" "}
+              <small>ADD TO WISHLIST </small>
+            </div>
+          </Card>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 }
 

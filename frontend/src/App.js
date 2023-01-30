@@ -51,7 +51,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="d-flex flex-column tog">
+      <div
+        className="d-flex flex-column tog"
+        style={{ backgroundColor: "#f5f8fa" }}
+      >
         <ToastContainer position="bottom-center" limit={1} />
 
         <Row style={{ paddingRight: "0rem" }} className="no-gutters">
@@ -63,7 +66,7 @@ function App() {
               <div className="d-flex flex-column">
                 <div className="profile">
                   <img
-                    src="images/isaiah.jpeg"
+                    src="images/user.png"
                     alt="image description"
                     className="img-fluid rounded-circle"
                   />
@@ -75,7 +78,7 @@ function App() {
                       marginBottom: "1rem",
                     }}
                   >
-                    Hello Isaiah
+                    {userInfo ? <>Hello {userInfo.name}</> : <>Hello Shopper</>}
                   </h3>
                   <div className="social-links text-center">
                     <a href="#" className="facebook">
@@ -146,13 +149,27 @@ function App() {
                       </a>
                     </li>
                     <li>
-                      <a href="#contact" className="nav-link scrollto">
-                        <i
-                          className="bx bx-log-out"
-                          style={{ fontSize: "1.5rem" }}
-                        ></i>{" "}
-                        <span>Sign Out</span>
-                      </a>
+                      {userInfo ? (
+                        <Link
+                          className="dropdown-item"
+                          to="#signout"
+                          onClick={signoutHandler}
+                        >
+                          <i
+                            className="bx bx-log-out"
+                            style={{ fontSize: "1.5rem" }}
+                          ></i>{" "}
+                          <span>Sign Out</span>
+                        </Link>
+                      ) : (
+                        <Link className="dropdown-item" to="/signin">
+                          <i
+                            className="bx bx-log-in"
+                            style={{ fontSize: "1.5rem" }}
+                          ></i>{" "}
+                          <span>Sign In</span>
+                        </Link>
+                      )}
                     </li>
                   </ul>
                 </nav>
@@ -161,7 +178,7 @@ function App() {
           </Col>
 
           <Col md={8} xs={12} sm={12} className="main">
-            <main style={{ marginLeft: "" }}>
+            <main style={{ marginRight: "2rem" }}>
               <div className="mb-3 ">
                 <i
                   className="bx bx-menu mobile-nav-toggle d-xl-none"
@@ -187,7 +204,7 @@ function App() {
                       }}
                     ></i>{" "}
                   </Link>
-                  {cart.cartItems.length > 0 && (
+                  {cart.cartItems.length >= 0 && (
                     <span
                       style={{
                         transform: "translate(-1.5rem)",
@@ -226,6 +243,7 @@ function App() {
                 className="d-flex align-items-center rounded"
                 style={{
                   width: "96%",
+                  backgroundColor: "#f5f8fa",
                   // position: "absolute",
                 }}
               >
@@ -254,6 +272,8 @@ function App() {
                     borderRadius: "1.5rem",
                     borderColor: "#E5DBD3",
                     height: "2rem",
+
+                    backgroundColor: "#f5f8fa",
                     // backgroundColor: "#E5DBD3",
                     color: "#E5DBD3",
                     // marginLeft: "2rem",

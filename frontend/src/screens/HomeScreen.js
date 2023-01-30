@@ -59,7 +59,10 @@ function HomeScreen() {
     container.scrollLeft += 50;
   };
   return (
-    <div className="d-flex justify-content-center flex-column">
+    <div
+      className="d-flex justify-content-center flex-column"
+      style={{ backgroundColor: "#f5f8fa" }}
+    >
       <Helmet>
         <title>Hot Picks</title>
       </Helmet>
@@ -132,7 +135,7 @@ function HomeScreen() {
         </strong>
       </Container>
 
-      <div className="products">
+      <div className="products" style={{ backgroundColor: "#f5f8fa" }}>
         {loading ? (
           <LoadingBox />
         ) : error ? (

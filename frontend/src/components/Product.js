@@ -33,7 +33,7 @@ function Product(props) {
   };
   return (
     <Container className="d-flex  justify-content-center">
-      <Card>
+      <Card >
         <div className="wishlist">
           <i
             className={`lar ${color}`}
