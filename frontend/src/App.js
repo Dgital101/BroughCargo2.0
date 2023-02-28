@@ -22,6 +22,8 @@ import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import { Form, FormControl, Button, Row, Col } from "react-bootstrap";
+import DashboardScreen from "./screens/DashboardScreen";
+import AdminRoute from "./components/AdminRoute";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -93,12 +95,32 @@ function App() {
                     <a href="#" className="linkedin">
                       <i className="bx bx-current-location"></i>
                     </a>
-
-                    <a href="#" className="linkedin">
-                      <i class="bx bx-group"></i>
-                    </a>
+                    {userInfo && userInfo.Admin && (
+                      <div>
+                        <a href="#" className="linkedin">
+                          <i className="bx bx-group"></i>
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
+
+                {userInfo && userInfo.isAdmin && (
+                  <NavDropdown title="Admin" id="admin-nav-dropdown">
+                    <LinkContainer to="/admin/dashboard">
+                      <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/admin/products">
+                      <NavDropdown.Item>Products</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/admin/orders">
+                      <NavDropdown.Item>Orders</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/admin/users">
+                      <NavDropdown.Item>Users</NavDropdown.Item>
+                    </LinkContainer>
+                  </NavDropdown>
+                )}
 
                 <nav id="navbar" className="nav-menu navbar">
                   <ul>
@@ -189,11 +211,12 @@ function App() {
                 className="d-flex flex-row mt-1 "
                 style={{ marginLeft: "0rem" }}
               >
-                <div
+                <LinkContainer
+                  to="/cart"
                   className="d-flex cart-badge-container"
-                  style={{ marginTop: "1rem" }}
+                  style={{ marginTop: "1rem", cursor: "pointer" }}
                 >
-                  <Link to="/cart" className="nav-link ">
+                  <div>
                     <i
                       className="fa fa-shopping-cart fa-lg"
                       aria-hidden="true"
@@ -202,28 +225,29 @@ function App() {
                         color: "black",
                         fontSize: "40px",
                       }}
-                    ></i>{" "}
-                  </Link>
-                  {cart.cartItems.length >= 0 && (
-                    <span
-                      style={{
-                        transform: "translate(-1.5rem)",
-                        paddingLeft: "0rem",
-                      }}
-                    >
-                      <Badge
-                        pill
-                        bg="danger"
-                        className="mx-2"
+                    ></i>
+
+                    {cart.cartItems.length >= 0 && (
+                      <span
                         style={{
-                          transform: "translateY(-1rem)",
+                          transform: "translate(-1.5rem)",
+                          paddingLeft: "0rem",
                         }}
                       >
-                        {cart.cartItems.length}
-                      </Badge>
-                    </span>
-                  )}
-                </div>
+                        <Badge
+                          pill
+                          bg="danger"
+                          className="mx-2"
+                          style={{
+                            transform: "translateY(-1rem)",
+                          }}
+                        >
+                          {cart.cartItems.length}
+                        </Badge>
+                      </span>
+                    )}
+                  </div>
+                </LinkContainer>
                 <LinkContainer
                   to="/"
                   style={{ order: -1 }}
@@ -258,7 +282,7 @@ function App() {
                   }}
                 >
                   <i
-                    class="bx bx-search"
+                    className="bx bx-search"
                     style={{
                       fontWeight: "bold",
                     }}
@@ -274,7 +298,7 @@ function App() {
                     height: "2rem",
 
                     backgroundColor: "#f5f8fa",
-                    // backgroundColor: "#E5DBD3",
+
                     color: "#E5DBD3",
                     // marginLeft: "2rem",
                     marginTop: "1rem",
@@ -291,13 +315,23 @@ function App() {
                 <Route path="/shipping" element={<ShippingScreen />} />
                 <Route path="/payment" element={<PaymentMethodScreen />} />
                 <Route path="/placeorder" element={<PlaceOrderScreen />} />
-                <Route path="/order/:id" element={<OrderScreen />} />
+                <Route path="/order/:id" element={<OrderScreen />}></Route>
+                <Route
+                  path="admin/dashboard"
+                  element={
+                    <AdminRoute>
+                      <DashboardScreen />
+                    </AdminRoute>
+                  }
+                />
                 <Route path="/" element={<HomeScreen />} />
               </Routes>
-              <footer></footer>
             </main>
           </Col>
         </Row>
+        <footer>
+          <div className="text-center">All rights reserved</div>
+        </footer>
       </div>
     </BrowserRouter>
   );

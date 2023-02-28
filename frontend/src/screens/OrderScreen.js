@@ -1,16 +1,16 @@
 import axios from "axios";
 import React, { useContext, useEffect, useReducer } from "react";
-import Col from "react-bootstrap/esm/Col";
-import Row from "react-bootstrap/esm/Row";
 import { Helmet } from "react-helmet-async";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ListGroup from "react-bootstrap/ListGroup";
+import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { Store } from "../Store";
 import { getError } from "../utils";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
-import { Link } from "react-router-dom";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -20,6 +20,7 @@ function reducer(state, action) {
       return { ...state, loading: false, order: action.payload, error: "" };
     case "FETCH_FAIL":
       return { ...state, loading: false, error: action.payload };
+
     default:
       return state;
   }
@@ -27,9 +28,12 @@ function reducer(state, action) {
 export default function OrderScreen() {
   const { state } = useContext(Store);
   const { userInfo } = state;
+
   const params = useParams();
   const { id: orderId } = params;
+  console.log(orderId);
   const navigate = useNavigate();
+
   const [{ loading, error, order }, dispatch] = useReducer(reducer, {
     loading: true,
     order: {},
@@ -39,23 +43,24 @@ export default function OrderScreen() {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        dispatch({ typr: "FETCH_REQUEST" });
+        dispatch({ type: "FETCH_REQUEST" });
         const { data } = await axios.get(`/api/orders/${orderId}`, {
           headers: { authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: "FETCH_SUCCESS", payload: data });
+        console.log(data);
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
     };
-    if (!userInfo) {
-      return navigate("/login");
-    }
 
+    if (!userInfo) {
+      return navigate("/signin");
+    }
     if (!order._id || (order._id && order._id !== orderId)) {
       fetchOrder();
     }
-  }, [navigate, order._id, orderId, userInfo]);
+  }, [order, userInfo, orderId, navigate]);
   return loading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (

@@ -77,31 +77,23 @@ function ProductScreen() {
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <div className="d-flex justify-content-end mt-5">
+    <Container className="d-flex align-content-center  mt-5">
       <Helmet>
         <title>{product.name}</title>
       </Helmet>
-      <Row>
-        <Col
-          md={3}
-          xs={12}
-          sm={12}
-          className="prod-imgs d-flex justify-content-center"
-        >
+      <Row className="d-flex justify-content-center">
+        <Col sm={6} md={6} lg={3} xs={12}>
           <img
             src={product.Image}
             alt={product.name}
-            style={{ height: "90%" }}
+            style={{ height: "50%" }}
           />
         </Col>
-        <Col
-          md={4}
-          xs={8}
-          sm={8}
-          style={{ marginLeft: "30%" }}
-          className="d-flex justify-content-center"
-        >
-          <Card style={{ padding: "1rem" }}>
+
+        <Col sm={6} md={6} lg={3} xs={10} className="mb-3">
+          <Card
+            style={{ padding: "1rem", marginTop: "2rem", marginBottom: "2rem" }}
+          >
             <div>{product.name}</div>
             <Rating rating={product.rating} numReviews={product.numReviews} />
             <Card.Subtitle>Description</Card.Subtitle>
@@ -142,7 +134,7 @@ function ProductScreen() {
           </Card>
         </Col>
       </Row>
-    </div>
+    </Container>
   );
 }
 

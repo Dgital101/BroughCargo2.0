@@ -32,8 +32,11 @@ function Product(props) {
     });
   };
   return (
-    <Container className="d-flex  justify-content-center">
-      <Card >
+    <Container
+      className="d-flex  justify-content-center"
+      style={{ backgroundColor: "#f5f8fa" }}
+    >
+      <Card style={{ backgroundColor: "#f5f8fa" }}>
         <div className="wishlist">
           <i
             className={`lar ${color}`}

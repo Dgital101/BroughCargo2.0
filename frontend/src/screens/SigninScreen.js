@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
@@ -42,40 +43,74 @@ export default function SigninScreen() {
     }
   }, [navigate, redirect, userInfo]);
   return (
-    <Container className="flex-column align-items-center">
-      <Helmet>
-        <title>Sign In</title>
-      </Helmet>
+    <Container
+      className="d-flex align-items-center justify-content-center"
+      style={{
+        marginTop: "10%",
+      }}
+    >
+      <Card>
+        <Card.Header
+          style={{
+            backgroundColor: "#e5dbd3",
+            color: "#fff",
+          }}
+        >
+          <h5 className="text-center">Sign in</h5>
+        </Card.Header>
+        <Card.Body>
+          <Form onSubmit={submitHandler}>
+            <Form.Group className="mb-3 mt-5" controlId="username">
+              <Form.Control
+                type="username"
+                placeholder="Username"
+                required
+                onChange={(e) => setEmail(e.target.value)}
+                style={{
+                  backgroundColor: "#D9D9D9",
+                  borderRadius: "10px",
+                  color: "#19234D",
+                  fontSize: "0.9em",
+                }}
+              />
+            </Form.Group>
 
-      <h1 className="my-3 "> Sign In</h1>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+                style={{
+                  backgroundColor: "#D9D9D9",
+                  borderRadius: "10px",
+                  color: "#19234D",
+                  fontSize: "0.9em",
+                }}
+              />
+            </Form.Group>
 
-      <Form onSubmit={submitHandler}>
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-
-        <div className="mb-3">
-          <Button type="submit">Sign In</Button>
-        </div>
-
-        <div className="mb-3">
-          Don't Have an Account?{" "}
-          <Link to={`/signup?redirect=${redirect}`}> Sign Up</Link>
-        </div>
-      </Form>
+            <Button
+              variant="primary"
+              type="submit"
+              className="mb-5 mt-5"
+              style={{
+                backgroundColor: "burlywood",
+                color: "#19234D",
+                width: "100%",
+                borderRadius: "50px",
+                borderColor: "burlywood",
+              }}
+            >
+              login
+            </Button>
+          </Form>
+          <div className="mb-3 text-center">
+            Don't Have an Account?{" "}
+            <Link to={`/signup?redirect=${redirect}`}> Sign Up</Link>
+          </div>
+        </Card.Body>
+      </Card>
     </Container>
   );
 }
