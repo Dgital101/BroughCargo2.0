@@ -15,8 +15,8 @@ uploadRouter.post(
   upload.single("file"),
   async (req, res) => {
     cloudinary.config({
-      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-      api_key: process.env.CLOUDINARY_API_KEY,
+      cloud_name: "duma2aru7",
+      api_key: "929917653363724",
       api_secret: "aRUC0JzURlbFd6boD3vBb6u35zc",
     });
     const streamUpload = (req) => {
