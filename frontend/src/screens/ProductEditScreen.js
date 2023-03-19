@@ -25,6 +25,17 @@ const reducer = (state, action) => {
       return { ...state, loadingUpdate: false };
     case "UPDATE_FAIL":
       return { ...state, loadingUpdate: false };
+    case "UPLOAD_REQUEST":
+      return { ...state, loadingUpload: true, errorUpload: "" };
+    case "UPLOAD_SUCCESS":
+      return {
+        ...state,
+        loadingUpload: false,
+        errorUpload: "",
+      };
+    case "UPLOAD_FAIL":
+      return { ...state, loadingUpload: false, errorUpload: action.payload };
+
     default:
       return state;
   }
@@ -36,19 +47,20 @@ export default function ProductEditScreen() {
 
   const { state } = useContext(Store);
   const { userInfo } = state;
-  const [{ loading, error, loadingUpdate }, dispatch] = useReducer(reducer, {
-    loading: true,
-    error: "",
-  });
+  const [{ loading, error, loadingUpdate, loadingUpload }, dispatch] =
+    useReducer(reducer, {
+      loading: true,
+      error: "",
+    });
 
   const [name, setName] = useState("");
   const [slug, setSlug] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
+  const [Image, setImage] = useState("");
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState("");
   const [brand, setBrand] = useState("");
-  const [description, setDescription] = useState("");
+  const [Description, setDescription] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,11 +70,11 @@ export default function ProductEditScreen() {
         setName(data.name);
         setSlug(data.slug);
         setPrice(data.price);
-        setImage(data.image);
+        setImage(data.Image);
         setCategory(data.category);
         setCountInStock(data.countInStock);
         setBrand(data.brand);
-        setDescription(data.description);
+        setDescription(data.Description);
         dispatch({ type: "FETCH_SUCCESS" });
       } catch (err) {
         dispatch({
@@ -85,11 +97,11 @@ export default function ProductEditScreen() {
           name,
           slug,
           price,
-          image,
+          Image,
           category,
           brand,
           countInStock,
-          description,
+          Description,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -105,6 +117,27 @@ export default function ProductEditScreen() {
       dispatch({ type: "UPDATE_FAIL" });
     }
   };
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append("file", file);
+    try {
+      dispatch({ type: "UPLOAD_REQUEST" });
+      const { data } = await axios.post("/api/upload", bodyFormData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      dispatch({ type: "UPLOAD_SUCCESS" });
+
+      toast.success("Image uploaded successfully");
+      setImage(data.secure_url);
+    } catch (err) {
+      toast.error(getError(err));
+      dispatch({ type: "UPLOAD_FAIL", payload: getError(err) });
+    }
+  };
   return (
     <Container className="d-flex flex-column">
       <Helmet>
@@ -118,8 +151,8 @@ export default function ProductEditScreen() {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <Form
+          style={{ width: "20rem", marginLeft: "auto", marginRight: "auto" }}
           onSubmit={submitHandler}
-          style={{ marginLeft: "auto", marginRight: "auto", width: "20rem" }}
         >
           <Form.Group className="mb-3" controlId="name">
             <Form.Label>Name</Form.Label>
@@ -148,11 +181,17 @@ export default function ProductEditScreen() {
           <Form.Group className="mb-3" controlId="image">
             <Form.Label>Image File</Form.Label>
             <Form.Control
-              value={image}
+              value={Image}
               onChange={(e) => setImage(e.target.value)}
               required
             />
           </Form.Group>
+          <Form.Group className="mb-3" controlId="imageFile">
+            <Form.Label>Upload File</Form.Label>
+            <Form.Control type="file" onChange={uploadFileHandler} />
+            {loadingUpload && <LoadingBox></LoadingBox>}
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="category">
             <Form.Label>Category</Form.Label>
             <Form.Control
@@ -180,7 +219,9 @@ export default function ProductEditScreen() {
           <Form.Group className="mb-3" controlId="description">
             <Form.Label>Description</Form.Label>
             <Form.Control
-              value={description}
+              as="textarea"
+              rows={4}
+              value={Description}
               onChange={(e) => setDescription(e.target.value)}
               required
             />

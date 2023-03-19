@@ -18,14 +18,14 @@ productRouter.post(
     const newProduct = new Product({
       name: "sample name " + Date.now(),
       slug: "sample-name-" + Date.now(),
-      image: "/images/p1.jpg",
+      Image: "/images/p1.jpg",
       price: 0,
       category: "sample category",
       brand: "sample brand",
       countInStock: 0,
       rating: 0,
       numReviews: 0,
-      description: "sample description",
+      Description: "sample description",
     });
     const product = await newProduct.save();
     res.send({ message: "Product Created", product });
@@ -43,11 +43,11 @@ productRouter.put(
       product.name = req.body.name;
       product.slug = req.body.slug;
       product.price = req.body.price;
-      product.image = req.body.image;
+      product.Image = req.body.Image;
       product.category = req.body.category;
       product.brand = req.body.brand;
       product.countInStock = req.body.countInStock;
-      product.description = req.body.description;
+      product.Description = req.body.Description;
       await product.save();
       res.send({ message: "Product Updated" });
     } else {

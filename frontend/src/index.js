@@ -12,9 +12,9 @@ root.render(
   <React.StrictMode style={{ backgroundColor: "#f5f8fa" }}>
     <StoreProvider>
       <HelmetProvider style={{ backgroundColor: "#f5f8fa" }}>
-        {/* <PayPalScriptProvider deferLoading={true}> */}
+
         <App style={{ backgroundColor: "#f5f8fa" }} />
-        {/* </PayPalScriptProvider> */}
+
       </HelmetProvider>
     </StoreProvider>
   </React.StrictMode>
