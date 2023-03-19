@@ -24,6 +24,7 @@ import OrderScreen from "./screens/OrderScreen";
 import { Form, FormControl, Button, Row, Col } from "react-bootstrap";
 import DashboardScreen from "./screens/DashboardScreen";
 import AdminRoute from "./components/AdminRoute";
+import ProductListScreen from "./screens/ProductListScreen";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -319,8 +320,16 @@ function App() {
                 <Route
                   path="admin/dashboard"
                   element={
+                    // <AdminRoute>
+                    <DashboardScreen />
+                    // </AdminRoute>
+                  }
+                />
+                <Route
+                  path="admin/products"
+                  element={
                     <AdminRoute>
-                      <DashboardScreen />
+                      <ProductListScreen />
                     </AdminRoute>
                   }
                 />

@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/Dgital101/BroughCargo2.0/issues"
   },
-  "homepage": "https://github.com/Dgital101/BroughCargo2.0#readme"
+  "homepage": "https://github.com/Dgital101/BroughCargo2.0#readme",
+  "dependencies": {
+    "payfast": "^1.0.0",
+    "react-paypal-js": "^0.0.1-security"
+  }
 }
