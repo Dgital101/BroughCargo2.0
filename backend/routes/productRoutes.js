@@ -26,6 +26,7 @@ productRouter.post(
       rating: 0,
       numReviews: 0,
       Description: "sample description",
+      sellerID: 0,
     });
     const product = await newProduct.save();
     res.send({ message: "Product Created", product });
@@ -48,6 +49,7 @@ productRouter.put(
       product.brand = req.body.brand;
       product.countInStock = req.body.countInStock;
       product.Description = req.body.Description;
+      product.sellerID = req.body.sellerID;
       await product.save();
       res.send({ message: "Product Updated" });
     } else {
@@ -66,11 +68,18 @@ productRouter.get(
     const { query } = req;
     const page = query.page || 1;
     const pageSize = query.pageSize || PAGE_SIZE;
+    const category = query.category || "";
+    const sellerID = query.sellerID || "";
 
-    const products = await Product.find()
+    let filter = {};
+    if (sellerID !== "") {
+      filter = { sellerID };
+    }
+
+    const products = await Product.find(filter)
       .skip(pageSize * (page - 1))
       .limit(pageSize);
-    const countProducts = await Product.countDocuments();
+    const countProducts = await Product.countDocuments(filter);
     res.send({
       products,
       countProducts,

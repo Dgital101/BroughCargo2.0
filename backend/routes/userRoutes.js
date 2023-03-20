@@ -19,6 +19,7 @@ userRouter.post(
           email: user.email,
           isAdmin: user.isAdmin,
           token: generateToken(user),
+          sellerID: user.sellerID,
         });
 
         return;

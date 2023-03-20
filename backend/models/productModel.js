@@ -11,6 +11,7 @@ const productSchema = new mongoose.Schema(
     price: { type: Number, required: true },
     countInStock: { type: Number, required: true },
     numReviews: { type: Number, required: true },
+    sellerID: { type: String, required: true },
   },
   {
     timestamps: true,

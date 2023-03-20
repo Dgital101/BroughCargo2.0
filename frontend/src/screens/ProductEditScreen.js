@@ -61,6 +61,7 @@ export default function ProductEditScreen() {
   const [countInStock, setCountInStock] = useState("");
   const [brand, setBrand] = useState("");
   const [Description, setDescription] = useState("");
+  const [sellerID, setSellerID] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,6 +76,7 @@ export default function ProductEditScreen() {
         setCountInStock(data.countInStock);
         setBrand(data.brand);
         setDescription(data.Description);
+        setSellerID(userInfo.name);
         dispatch({ type: "FETCH_SUCCESS" });
       } catch (err) {
         dispatch({
@@ -102,6 +104,7 @@ export default function ProductEditScreen() {
           brand,
           countInStock,
           Description,
+          sellerID,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
