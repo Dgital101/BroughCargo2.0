@@ -64,6 +64,11 @@ export default function PaymentMethodScreen() {
           </div>
         </Form>
       </Container>
+      <footer
+        style={{ position: "absolute", left: "0", bottom: "0", right: "0" }}
+      >
+        <div className="text-center">All rights reserved</div>
+      </footer>
     </div>
   );
 }

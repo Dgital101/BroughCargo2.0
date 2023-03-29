@@ -59,10 +59,7 @@ function HomeScreen() {
     container.scrollLeft += 50;
   };
   return (
-    <div
-      className="d-flex justify-content-center flex-column"
-      style={{ backgroundColor: "#f5f8fa" }}
-    >
+    <div className="d-flex justify-content-center flex-column">
       <Helmet>
         <title>Hot Picks</title>
       </Helmet>
@@ -160,6 +157,7 @@ function HomeScreen() {
           </Row>
         )}
       </div>
+   
     </div>
   );
 }

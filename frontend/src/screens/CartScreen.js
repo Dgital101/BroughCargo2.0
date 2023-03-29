@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
+import Footer from "../components/Footer";
 
 export default function CartScreen() {
   const navigate = useNavigate();
@@ -58,8 +59,11 @@ export default function CartScreen() {
               <ListGroup>
                 {cartItems.map((item) => (
                   <ListGroup.Item key={item._id}>
-                    <Row className=" align-items-center ">
-                      <Col md={4} sm={4} xs={3}>
+                    <Row
+                      className=" align-items-center "
+                      style={{ gap: "0rem" }}
+                    >
+                      <Col md={4} sm={4} xs={3} className="mx-0">
                         <img
                           className="img-fluid rounded img-thumbnail"
                           src={item.Image}
@@ -68,7 +72,7 @@ export default function CartScreen() {
                         {"   "}
                         <Link to={`/product/${item.slug}`}> {item.name}</Link>
                       </Col>
-                      <Col md={4} sm={3} xs={5}>
+                      <Col md={5} sm={3} xs={5} style={{ marginLeft: "-1rem" }}>
                         {" "}
                         <Button
                           variant="light"
@@ -90,7 +94,7 @@ export default function CartScreen() {
                           <i className="fas fa-plus-circle"></i>
                         </Button>
                       </Col>
-                      <Col md={2} sm={2} xs={2}>
+                      <Col md={2} sm={2} xs={2} style={{ marginLeft: "-1rem" }}>
                         R{item.price}
                       </Col>
                       <Col md={2} sm={2} xs={1}>
@@ -116,7 +120,7 @@ export default function CartScreen() {
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     <Row className="align-items-center justify-content-between">
-                      <Col md={4}>
+                      <Col md={5}>
                         {" "}
                         <span>
                           <small>
@@ -197,6 +201,11 @@ export default function CartScreen() {
           </Container>
         </Col>
       </Row>
+      <footer
+        style={{ position: "absolute", left: "0", bottom: "0", right: "0" }}
+      >
+        <div className="text-center">All rights reserved</div>
+      </footer>
     </div>
   );
 }

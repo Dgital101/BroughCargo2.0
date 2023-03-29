@@ -159,6 +159,11 @@ export default function ProductListScreen() {
           </div>
         </>
       )}
+      <footer
+        style={{ position: "absolute", left: "0", bottom: "0", right: "0" }}
+      >
+        <div className="text-center">All rights reserved</div>
+      </footer>
     </div>
   );
 }

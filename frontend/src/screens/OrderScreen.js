@@ -60,11 +60,8 @@ export default function OrderScreen() {
     }
     if (!order._id || (order._id && order._id !== orderId)) {
       fetchOrder();
-    }
-    else{
-      const loadPayPalScript = async () =>{
-        
-      }
+    } else {
+      const loadPayPalScript = async () => {};
     }
   }, [order, userInfo, orderId, navigate]);
   return loading ? (
@@ -171,6 +168,11 @@ export default function OrderScreen() {
           </Card>
         </Col>
       </Row>
+      <footer
+        style={{ position: "absolute", left: "0", bottom: "0", right: "0" }}
+      >
+        <div className="text-center">All rights reserved</div>
+      </footer>
     </div>
   );
 }

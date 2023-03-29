@@ -55,10 +55,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div
-        className="d-flex flex-column tog"
-        style={{ backgroundColor: "#f5f8fa" }}
-      >
+      <div className="d-flex flex-column tog">
         <ToastContainer position="bottom-center" limit={1} />
 
         <Row style={{ paddingRight: "0rem" }} className="no-gutters">
@@ -209,6 +206,7 @@ function App() {
                   onClick={tog}
                 ></i>
               </div>
+
               <Container
                 className="d-flex flex-row mt-1 "
                 style={{ marginLeft: "0rem" }}
@@ -270,7 +268,8 @@ function App() {
                 style={{
                   width: "96%",
                   backgroundColor: "#f5f8fa",
-                  // position: "absolute",
+
+                  sticky: "top",
                 }}
               >
                 <Button
@@ -280,13 +279,14 @@ function App() {
                     marginTop: "1.2rem",
                     padding: "0rem",
                     fontWeight: "bold",
-                    backgroundColor: "#fff",
+                    backgroundColor: "#f5f8fa",
                   }}
                 >
                   <i
                     className="bx bx-search"
                     style={{
                       fontWeight: "bold",
+                      backgroundColor: "#f5f8fa",
                     }}
                   ></i>
                 </Button>
@@ -296,7 +296,7 @@ function App() {
                   className="searchbar"
                   style={{
                     borderRadius: "1.5rem",
-                    borderColor: "#E5DBD3",
+                    borderColor: "#000",
                     height: "2rem",
 
                     backgroundColor: "#f5f8fa",
@@ -347,9 +347,6 @@ function App() {
             </main>
           </Col>
         </Row>
-        <footer>
-          <div className="text-center">All rights reserved</div>
-        </footer>
       </div>
     </BrowserRouter>
   );

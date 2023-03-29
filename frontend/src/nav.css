@@ -90,9 +90,19 @@ h6 {
   .cart-badge-container {
     margin-left: 75%;
   }
+
+  .productCard {
+    margin-left: 10rem;
+  }
 }
 
 @media (max-width: 1199px) {
+  .productImg {
+    margin-left: 3rem;
+  }
+  .productCard {
+    margin-top: -5rem;
+  }
   #header {
     left: -300px;
   }
@@ -167,7 +177,7 @@ h6 {
 /* Mobile Navigation */
 .mobile-nav-toggle {
   position: fixed;
-  right: 0px;
+  right: 15px;
   top: 15px;
   z-index: 9998;
   border: 0;
