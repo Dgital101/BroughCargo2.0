@@ -26,6 +26,7 @@ import DashboardScreen from "./screens/DashboardScreen";
 import AdminRoute from "./components/AdminRoute";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
+import NewProductScreen from "./screens/NewProductScreen";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -58,7 +59,10 @@ function App() {
       <div className="d-flex flex-column tog">
         <ToastContainer position="bottom-center" limit={1} />
 
-        <Row style={{ paddingRight: "0rem" }} className="no-gutters">
+        <Row
+          style={{ paddingRight: "0rem", maxWidth: "100%" }}
+          className="no-gutters"
+        >
           <Col md={4} className="no-gutters">
             <header
               id="header"
@@ -310,7 +314,8 @@ function App() {
               </Form>
 
               <Routes>
-                <Route path="/product/:slug" element={<ProductScreen />} />
+                {/* <Route path="/product/:slug" element={<ProductScreen />} /> */}
+                <Route path="/product/:slug" element={<NewProductScreen />} />
                 <Route path="/cart" element={<CartScreen />} />
                 <Route path="/signin" element={<SigninScreen />} />
                 <Route path="/signup" element={<SignupScreen />} />
