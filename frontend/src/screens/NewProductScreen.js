@@ -46,7 +46,7 @@ function NewProductScreen() {
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
-
+      console.log(product);
       // setProducts(results.data);
     };
     fetchData();
@@ -75,7 +75,10 @@ function NewProductScreen() {
   };
 
   return (
-    <Container className="d-flex justify-content-center flex-column">
+    <Container
+      className="d-flex justify-content-center flex-column"
+      style={{ paddingLeft: "2rem" }}
+    >
       {loading ? (
         <div className="d-flex justify-content-center align-items-center">
           <LoadingBox />
@@ -109,7 +112,7 @@ function NewProductScreen() {
                   style={{
                     padding: "1rem",
                     marginBottom: "2rem",
-                    width: "19rem",
+                    width: "20rem",
                   }}
                 >
                   <div>{product.name}</div>
@@ -117,6 +120,7 @@ function NewProductScreen() {
                     rating={product.rating}
                     numReviews={product.numReviews}
                   />
+                  <div>{product.rating}</div>
                   <Card.Subtitle>Description</Card.Subtitle>
                   <Card.Text style={{ textAlign: "justify" }}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed

@@ -55,14 +55,17 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <div className="d-flex flex-column tog">
+    <BrowserRouter
+      style={{ maxWidth: "100%", marginLeft: "auto" }}
+      className="d-flex justify-content-center"
+    >
+      <div
+        className="d-flex flex-column tog"
+        style={{ maxWidth: "100%", marginLeft: "auto" }}
+      >
         <ToastContainer position="bottom-center" limit={1} />
 
-        <Row
-          style={{ paddingRight: "0rem", maxWidth: "100%" }}
-          className="no-gutters"
-        >
+        <Row style={{ paddingRight: "0rem" }} className="no-gutters">
           <Col md={4} className="no-gutters">
             <header
               id="header"

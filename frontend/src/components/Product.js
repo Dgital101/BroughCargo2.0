@@ -36,7 +36,7 @@ function Product(props) {
       className="d-flex  justify-content-center"
       style={{ backgroundColor: "#f5f8fa" }}
     >
-      <Card style={{ backgroundColor: "#f5f8fa" }}>
+      <Card style={{ backgroundColor: "#f5f8fa", width: "20rem" }}>
         <div className="wishlist">
           <i
             className={`lar ${color}`}

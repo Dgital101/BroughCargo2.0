@@ -47,19 +47,12 @@ function HomeScreen() {
     };
     fetchData();
   }, []);
-  const [color, setColor] = useState(" fa-heart-o");
 
-  const scrollLeft = () => {
-    let container = document.querySelector(".cate");
-    container.scrollLeft -= 50;
-  };
-
-  const scrollRight = () => {
-    let container = document.querySelector(".cate");
-    container.scrollLeft += 50;
-  };
   return (
-    <div className="d-flex justify-content-center flex-column">
+    <div
+      className="d-flex justify-content-center flex-column"
+      style={{ paddingLeft: "3rem" }}
+    >
       <Helmet>
         <title>Hot Picks</title>
       </Helmet>
@@ -157,7 +150,6 @@ function HomeScreen() {
           </Row>
         )}
       </div>
-   
     </div>
   );
 }

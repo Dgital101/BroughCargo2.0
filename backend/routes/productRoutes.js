@@ -24,9 +24,10 @@ productRouter.post(
       brand: "sample brand",
       countInStock: 0,
       rating: 0,
-      numReviews: 0,
+      numReviews: 75,
       Description: "sample description",
       sellerID: 0,
+      rating: 5,
     });
     const product = await newProduct.save();
     res.send({ message: "Product Created", product });
@@ -50,6 +51,7 @@ productRouter.put(
       product.countInStock = req.body.countInStock;
       product.Description = req.body.Description;
       product.sellerID = req.body.sellerID;
+      product.rating = req.body.rating;
       await product.save();
       res.send({ message: "Product Updated" });
     } else {
