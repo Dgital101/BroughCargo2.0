@@ -265,6 +265,7 @@ function App() {
                       src="/images/logo.png"
                       alt="Description of image"
                       className="logo d-flex justify-content-center"
+                      style={{ marginLeft: "auto" }}
                     />
                   </Navbar.Brand>
                 </LinkContainer>

@@ -95,7 +95,7 @@ export default function CartScreen() {
                         </Button>
                       </Col>
                       <Col md={2} sm={2} xs={2} style={{ marginLeft: "-1rem" }}>
-                        R{item.price}
+                        R {item.price}
                       </Col>
                       <Col md={2} sm={2} xs={1}>
                         <Button

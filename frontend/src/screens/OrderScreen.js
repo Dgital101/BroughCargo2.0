@@ -74,10 +74,14 @@ export default function OrderScreen() {
       <Helmet>
         <title>Order</title>
       </Helmet>
-      <h1 className="my-m">Order</h1>
+
       <Row>
-        <Col md={8}>
-          <Card className="mb-3">
+        <h1 className="text-center mt-5">Order</h1>
+        <Col md={8} xs={10}>
+          <Card
+            className="mb-3"
+            style={{ marginLeft: "auto", marginRight: "auto" }}
+          >
             <Card.Body>
               <Card.Title>Shipping</Card.Title>
               <Card.Text>
