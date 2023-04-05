@@ -209,8 +209,8 @@ a {
 }
 
 .checkout-steps > div.active {
-  border-bottom: 0.2rem solid green;
-  color: green;
+  border-bottom: 0.2rem solid burlywood;
+  color: burlywood;
 }
 
 .small-card {

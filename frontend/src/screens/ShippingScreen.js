@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { Store } from "../Store";
 import CheckoutSteps from "../components/CheckoutSteps";
+import { Card } from "react-bootstrap";
 
 export default function ShippingScreen() {
   const navigate = useNavigate();
@@ -16,9 +17,9 @@ export default function ShippingScreen() {
   } = state;
   const [fullName, setFullName] = useState(shippingAddress.fullName || "");
   const [address, setAddress] = useState(shippingAddress.address || "");
-  const [city, setCity] = useState(shippingAddress.city || " ");
+  const [city, setCity] = useState(shippingAddress.city || "");
   const [phoneNumber, setPhoneNumber] = useState(
-    shippingAddress.phoneNumber || " "
+    shippingAddress.phoneNumber || ""
   );
 
   useEffect(() => {
@@ -56,48 +57,72 @@ export default function ShippingScreen() {
         <title>Shipping Address</title>
       </Helmet>
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <h1 className="my-3"> Shipping Address</h1>
-      <div className="container small-container">
-        <Form onSubmit={submitHandler}>
-          <Form.Group className="mb-3" controlId="fullName">
-            <Form.Label>Full Name</Form.Label>
-            <Form.Control
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="address">
-            <Form.Label>Address</Form.Label>
-            <Form.Control
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="city">
-            <Form.Label>City</Form.Label>
-            <Form.Control
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="phoneNumber">
-            <Form.Label>Phone Number</Form.Label>
-            <Form.Control
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <div className="m-3">
-            <Button variant="primary" type="submit">
-              Continue
-            </Button>
-          </div>
-        </Form>
-      </div>
+
+      <Card
+        className="mt-5"
+        style={{ width: "70%", marginLeft: "auto", marginRight: "auto" }}
+      >
+        <Card.Header
+          style={{
+            backgroundColor: "#e5dbd3",
+            color: "#fff",
+          }}
+        >
+          <h5 className="text-center">Shipping Address</h5>
+        </Card.Header>
+        <Card.Body>
+          <Form onSubmit={submitHandler}>
+            <Form.Group className="mb-3" controlId="fullName">
+              <Form.Control
+                placeholder="Full Name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="address">
+              <Form.Control
+                placeholder="Address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="city">
+              <Form.Control
+                placeholder="City"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="phoneNumber">
+              <Form.Control
+                placeholder="Phone Number"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                required
+              />
+            </Form.Group>
+            <div className="mt-1">
+              <Button
+                variant="primary"
+                type="submit"
+                style={{
+                  backgroundColor: "burlywood",
+                  color: "#19234D",
+                  width: "100%",
+                  borderRadius: "50px",
+                  borderColor: "burlywood",
+                }}
+              >
+                Continue
+              </Button>
+            </div>
+          </Form>
+        </Card.Body>
+      </Card>
     </div>
   );
 }
