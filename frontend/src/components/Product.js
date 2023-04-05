@@ -36,7 +36,9 @@ function Product(props) {
       className="d-flex  justify-content-center"
       style={{ backgroundColor: "#f5f8fa" }}
     >
-      <Card style={{ backgroundColor: "#f5f8fa", width: "20rem" }}>
+      <Card
+        style={{ backgroundColor: "#f5f8fa", width: "22rem", height: "25rem" }}
+      >
         <div className="wishlist">
           <i
             className={`lar ${color}`}
@@ -49,6 +51,7 @@ function Product(props) {
             src={product.Image}
             className="card-img-top"
             alt={product.name}
+            style={{ maxHeight: "13rem" }}
           />
         </Link>
         <Card.Body>

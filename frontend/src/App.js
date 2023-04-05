@@ -206,10 +206,10 @@ function App() {
           </Col>
 
           <Col md={8} xs={12} sm={12} className="main">
-            <main style={{ marginRight: "2rem" }}>
+            <main style={{}}>
               <div className="mb-3 ">
                 <i
-                  className="bx bx-menu mobile-nav-toggle d-xl-none"
+                  className="bx bx-menu mobile-nav-toggle d-md-none"
                   onClick={tog}
                 ></i>
               </div>

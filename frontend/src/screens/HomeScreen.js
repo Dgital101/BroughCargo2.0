@@ -51,19 +51,15 @@ function HomeScreen() {
   return (
     <div
       className="d-flex justify-content-center flex-column"
-      style={{ paddingLeft: "3rem" }}
+      // style={{ paddingLeft: "3rem" }}
     >
       <Helmet>
         <title>Hot Picks</title>
       </Helmet>
 
-      <Container className="d-flex full-width justify-content-start align-items-center mb-3 mt-4">
+      <Container className="d-flex full-width justify-content-between align-items-center mb-3 mt-4">
         {data.products.map((product) => (
-          <div
-            className="cate"
-            key={product.name}
-            style={{ marginLeft: "0rem", paddingRight: "2rem" }}
-          >
+          <div className="cate" key={product.name}>
             <a href={`/product/${product.slug}`}>
               <img src={product.Image} alt={product.name} />
             </a>
@@ -74,6 +70,8 @@ function HomeScreen() {
                 fontSize: "small",
                 color: "#000",
                 fontWeight: "bold",
+                marginRight: "2rem",
+                marginLeft: "2rem",
               }}
               className="mt-2"
             >
@@ -114,10 +112,7 @@ function HomeScreen() {
         </Carousel.Item>
       </Carousel>
 
-      <Container
-        className="d-flex justify-content-start "
-        style={{ gap: "50%" }}
-      >
+      <Container className="d-flex justify-content-between ">
         {" "}
         <h4> Hot Picks</h4>
         <strong>

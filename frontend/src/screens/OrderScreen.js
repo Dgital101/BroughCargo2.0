@@ -12,6 +12,7 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { Store } from "../Store";
 import { getError } from "../utils";
+import { Button } from "react-bootstrap";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -163,6 +164,11 @@ export default function OrderScreen() {
                     </Col>
                   </Row>
                 </ListGroup.Item>
+                {!order.isPaid && (
+                  <ListGroup.Item>
+                    <Button>Pay Now </Button>
+                  </ListGroup.Item>
+                )}
               </ListGroup>
             </Card.Body>
           </Card>
