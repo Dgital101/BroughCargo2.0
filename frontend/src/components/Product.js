@@ -37,19 +37,19 @@ function Product(props) {
       style={{ backgroundColor: "#f5f8fa" }}
     >
       <Card style={{ backgroundColor: "#f5f8fa", width: "22rem" }}>
-        <div className="wishlist">
-          <i
-            className={`lar ${color}`}
-            onClick={() => setColor("fa-heart")}
-          ></i>
-          <i className="las la-heart"></i>
-        </div>
-        <Link to={`/product/${product.slug}`}>
+        <Link
+          to={`/product/${product.slug}`}
+          className="d-flex justify-content-center "
+        >
           <img
             src={product.Image}
-            className="card-img-top"
+            className="image-container"
             alt={product.name}
-            style={{ maxHeight: "13rem" }}
+            style={{
+              marginLeft: "auto",
+              marginRight: "auto",
+              marginTop: "1rem",
+            }}
           />
         </Link>
         <Card.Body>
