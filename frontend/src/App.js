@@ -28,6 +28,7 @@ import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import NewProductScreen from "./screens/NewProductScreen";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -132,13 +133,16 @@ function App() {
                 <nav id="navbar" className="nav-menu navbar">
                   <ul>
                     <li>
-                      <a href="#hero" className="nav-link ">
-                        <i
-                          className="bx bx-user"
-                          style={{ fontSize: "1.5rem" }}
-                        ></i>
-                        <span>Account Details</span>
-                      </a>
+                      <LinkContainer to="/profile">
+                        <NavDropdown.Item>
+                          {" "}
+                          <i
+                            className="bx bx-user"
+                            style={{ fontSize: "1.5rem" }}
+                          ></i>
+                          <span>Account Details</span>
+                        </NavDropdown.Item>
+                      </LinkContainer>
                     </li>
                     <li>
                       <LinkContainer to="/orderhistory">
@@ -329,6 +333,7 @@ function App() {
                 <Route path="/shipping" element={<ShippingScreen />} />
                 <Route path="/payment" element={<PaymentMethodScreen />} />
                 <Route path="/placeorder" element={<PlaceOrderScreen />} />
+                <Route path="/profile" element={<ProfileScreen />} />
                 <Route
                   path="/orderhistory"
                   element={<OrderHistoryScreen />}
