@@ -44,7 +44,7 @@ export default function SearchBox() {
             borderTopRightRadius: "0rem",
             borderBottomRightRadius: "0rem",
             backgroundColor: "transparent",
-            color: "#E5DBD3",
+            color: "#000",
             marginTop: "1rem",
           }}
         ></FormControl>

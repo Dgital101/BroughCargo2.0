@@ -32,6 +32,8 @@ import ProfileScreen from "./screens/ProfileScreen";
 import SearchBox from "./components/SearchBox";
 import SearchScreen from "./screens/SearchScreen";
 import OrderListScreen from "./screens/OrderListScreen";
+import UserListScreen from "./screens/UserListScreen";
+import UserEditScreen from "./screens/UserEditScreen";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -328,6 +330,23 @@ function App() {
                   element={
                     <AdminRoute>
                       <OrderListScreen />
+                    </AdminRoute>
+                  }
+                ></Route>
+
+                <Route
+                  path="/admin/users"
+                  element={
+                    <AdminRoute>
+                      <UserListScreen />
+                    </AdminRoute>
+                  }
+                ></Route>
+                <Route
+                  path="/admin/user/:id"
+                  element={
+                    <AdminRoute>
+                      <UserEditScreen />
                     </AdminRoute>
                   }
                 ></Route>
