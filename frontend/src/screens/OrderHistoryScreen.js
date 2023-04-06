@@ -7,6 +7,7 @@ import MessageBox from "../components/MessageBox";
 import { Store } from "../Store";
 import { getError } from "../utils";
 import Button from "react-bootstrap/esm/Button";
+import { Container, Table } from "react-bootstrap";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -50,56 +51,67 @@ export default function OrderHistoryScreen() {
     fetchData();
   }, [userInfo]);
   return (
-    <div>
+    <Container className="d-flex flex-column ">
       <Helmet>
         <title>Order History</title>
       </Helmet>
+      <h3
+        style={{
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginTop: "2rem",
+          fontWeight: "bold",
+        }}
+      >
+        Order History
+      </h3>
 
-      <h1>Order History</h1>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <table className="table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th>ACTIONS</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => (
-              <tr key={order._id}>
-                <td>{order._id}</td>
-                <td>{order.createdAt.substring(0, 10)}</td>
-                <td>{order.totalPrice.toFixed(2)}</td>
-                <td>{order.isPaid ? order.paidAt.substring(0, 10) : "No"}</td>
-                <td>
-                  {order.isDelivered
-                    ? order.deliveredAt.substring(0, 10)
-                    : "No"}
-                </td>
-                <td>
-                  <Button
-                    type="button"
-                    variant="light"
-                    onClick={() => {
-                      navigate(`/order/${order._id}`);
-                    }}
-                  >
-                    Details
-                  </Button>
-                </td>
+        <Container className="d-flex flex-column justify-content-center ">
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                {/* <th>ID</th> */}
+                <th>DATE</th>
+                <th>SUM</th>
+                <th>PAID</th>
+                <th>DELIVERED</th>
+                <th>ACTIONS</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {orders.map((order) => (
+                <tr key={order._id}>
+                  {/* <td>{order._id}</td> */}
+                  <td>{order.createdAt.substring(0, 10)}</td>
+                  <td>{order.totalPrice.toFixed(2)}</td>
+                  <td>{order.isPaid ? order.paidAt.substring(0, 10) : "No"}</td>
+                  <td>
+                    {order.isDelivered
+                      ? order.deliveredAt.substring(0, 10)
+                      : "No"}
+                  </td>
+                  <td>
+                    <Button
+                      type="button"
+                      variant="info"
+                      onClick={() => {
+                        navigate(`/order/${order._id}`);
+                      }}
+                    >
+                      Details
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Container>
       )}
-    </div>
+    </Container>
   );
 }
