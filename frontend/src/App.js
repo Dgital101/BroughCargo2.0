@@ -27,6 +27,7 @@ import AdminRoute from "./components/AdminRoute";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import NewProductScreen from "./screens/NewProductScreen";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -140,13 +141,16 @@ function App() {
                       </a>
                     </li>
                     <li>
-                      <a href="#about" className="nav-link scrollto">
-                        <i
-                          className="bx bx-list-ul "
-                          style={{ fontSize: "1.5rem" }}
-                        ></i>{" "}
-                        <span>Order History</span>
-                      </a>
+                      <LinkContainer to="/orderhistory">
+                        <NavDropdown.Item>
+                          {" "}
+                          <i
+                            className="bx bx-list-ul "
+                            style={{ fontSize: "1.5rem" }}
+                          ></i>{" "}
+                          <span>Order History</span>
+                        </NavDropdown.Item>
+                      </LinkContainer>
                     </li>
                     <li>
                       <a href="#resume" className="nav-link scrollto">
@@ -265,7 +269,6 @@ function App() {
                       src="/images/logo.png"
                       alt="Description of image"
                       className="logo d-flex justify-content-center"
-                      style={{ marginLeft: "auto" }}
                     />
                   </Navbar.Brand>
                 </LinkContainer>
@@ -326,6 +329,10 @@ function App() {
                 <Route path="/shipping" element={<ShippingScreen />} />
                 <Route path="/payment" element={<PaymentMethodScreen />} />
                 <Route path="/placeorder" element={<PlaceOrderScreen />} />
+                <Route
+                  path="/orderhistory"
+                  element={<OrderHistoryScreen />}
+                ></Route>
                 <Route path="/order/:id" element={<OrderScreen />}></Route>
                 <Route
                   path="admin/dashboard"
