@@ -13,6 +13,7 @@ import MessageBox from "../components/MessageBox";
 import { Store } from "../Store";
 import { getError } from "../utils";
 import { Button } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -23,24 +24,38 @@ function reducer(state, action) {
     case "FETCH_FAIL":
       return { ...state, loading: false, error: action.payload };
 
+    case "DELIVER_REQUEST":
+      return { ...state, loadingDeliver: true };
+    case "DELIVER_SUCCESS":
+      return { ...state, loadingDeliver: false, successDeliver: true };
+    case "DELIVER_FAIL":
+      return { ...state, loadingDeliver: false };
+    case "DELIVER_RESET":
+      return {
+        ...state,
+        loadingDeliver: false,
+        successDeliver: false,
+      };
+
     default:
       return state;
   }
 }
+
 export default function OrderScreen() {
   const { state } = useContext(Store);
   const { userInfo } = state;
 
   const params = useParams();
   const { id: orderId } = params;
-  console.log(orderId);
   const navigate = useNavigate();
 
-  const [{ loading, error, order }, dispatch] = useReducer(reducer, {
-    loading: true,
-    order: {},
-    error: "",
-  });
+  const [{ loading, error, order, loadingDeliver, successDeliver }, dispatch] =
+    useReducer(reducer, {
+      loading: true,
+      order: {},
+      error: "",
+    });
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -50,7 +65,6 @@ export default function OrderScreen() {
           headers: { authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: "FETCH_SUCCESS", payload: data });
-        console.log(data);
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
@@ -65,6 +79,24 @@ export default function OrderScreen() {
       const loadPayPalScript = async () => {};
     }
   }, [order, userInfo, orderId, navigate]);
+
+  async function deliverOrderHandler() {
+    try {
+      dispatch({ type: "DELIVER_REQUEST" });
+      const { data } = await axios.put(
+        `/api/orders/${order._id}/deliver`,
+        {},
+        {
+          headers: { authorization: `Bearer ${userInfo.token}` },
+        }
+      );
+      dispatch({ type: "DELIVER_SUCCESS", payload: data });
+      toast.success("Order is delivered");
+    } catch (err) {
+      toast.error(getError(err));
+      dispatch({ type: "DELIVER_FAIL" });
+    }
+  }
   return loading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (
@@ -171,6 +203,17 @@ export default function OrderScreen() {
                 {!order.isPaid && (
                   <ListGroup.Item>
                     <Button>Pay Now </Button>
+                  </ListGroup.Item>
+                )}
+
+                {userInfo.isAdmin && !order.isPaid && !order.isDelivered && (
+                  <ListGroup.Item>
+                    {loadingDeliver && <LoadingBox></LoadingBox>}
+                    <div className="d-grid">
+                      <Button type="button" onClick={deliverOrderHandler}>
+                        Deliver Order
+                      </Button>
+                    </div>
                   </ListGroup.Item>
                 )}
               </ListGroup>

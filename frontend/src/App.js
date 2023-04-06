@@ -31,6 +31,7 @@ import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import SearchBox from "./components/SearchBox";
 import SearchScreen from "./screens/SearchScreen";
+import OrderListScreen from "./screens/OrderListScreen";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -301,9 +302,9 @@ function App() {
                 <Route
                   path="admin/dashboard"
                   element={
-                    // <AdminRoute>
-                    <DashboardScreen />
-                    // </AdminRoute>
+                    <AdminRoute>
+                      <DashboardScreen />
+                    </AdminRoute>
                   }
                 />
                 <Route
@@ -319,6 +320,14 @@ function App() {
                   element={
                     <AdminRoute>
                       <ProductEditScreen />
+                    </AdminRoute>
+                  }
+                ></Route>
+                <Route
+                  path="/admin/orders"
+                  element={
+                    <AdminRoute>
+                      <OrderListScreen />
                     </AdminRoute>
                   }
                 ></Route>

@@ -52,7 +52,9 @@ export default function DashboardScreen() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1 style={{ marginLeft: "10rem" }} className="mt-5">
+        Dashboard
+      </h1>
       {loading ? (
         <LoadingBox />
       ) : error ? (
