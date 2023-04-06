@@ -29,6 +29,7 @@ import ProductEditScreen from "./screens/ProductEditScreen";
 import NewProductScreen from "./screens/NewProductScreen";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import SearchBox from "./components/SearchBox";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -278,51 +279,7 @@ function App() {
                 </LinkContainer>
               </Container>
 
-              <Form
-                className="d-flex align-items-center rounded"
-                style={{
-                  width: "96%",
-                  backgroundColor: "#f5f8fa",
-
-                  sticky: "top",
-                }}
-              >
-                <Button
-                  variant="light"
-                  style={{
-                    transform: "translate(2rem)",
-                    marginTop: "1.2rem",
-                    padding: "0rem",
-                    fontWeight: "bold",
-                    backgroundColor: "#f5f8fa",
-                  }}
-                >
-                  <i
-                    className="bx bx-search"
-                    style={{
-                      fontWeight: "bold",
-                      backgroundColor: "#f5f8fa",
-                    }}
-                  ></i>
-                </Button>
-                <FormControl
-                  type="text"
-                  placeholder="     Groceries, food, clothes, etc"
-                  className="searchbar"
-                  style={{
-                    borderRadius: "1.5rem",
-                    borderColor: "#000",
-                    height: "2rem",
-
-                    backgroundColor: "#f5f8fa",
-
-                    color: "#E5DBD3",
-                    // marginLeft: "2rem",
-                    marginTop: "1rem",
-                    padding: "1rem",
-                  }}
-                />
-              </Form>
+              <SearchBox />
 
               <Routes>
                 {/* <Route path="/product/:slug" element={<ProductScreen />} /> */}
