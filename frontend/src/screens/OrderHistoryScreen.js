@@ -71,16 +71,21 @@ export default function OrderHistoryScreen() {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <Container className="d-flex flex-column justify-content-center ">
-          <Table striped bordered hover>
+        <Container className="d-flex flex-column  ">
+          <Table
+            striped
+            bordered
+            hover
+            // style={{ marginLeft: "auto", marginRight: "auto" }}
+          >
             <thead>
               <tr>
                 {/* <th>ID</th> */}
-                <th>DATE</th>
-                <th>SUM</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
-                <th>ACTIONS</th>
+                <th>Date</th>
+                <th>Sum</th>
+                <th>Paid</th>
+                <th>Deli..</th>
+                <th>View</th>
               </tr>
             </thead>
             <tbody>
@@ -98,12 +103,12 @@ export default function OrderHistoryScreen() {
                   <td>
                     <Button
                       type="button"
-                      variant="info"
+                      variant="light"
                       onClick={() => {
                         navigate(`/order/${order._id}`);
                       }}
                     >
-                      Details
+                      View
                     </Button>
                   </td>
                 </tr>
