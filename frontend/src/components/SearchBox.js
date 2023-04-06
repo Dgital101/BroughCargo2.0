@@ -18,7 +18,7 @@ export default function SearchBox() {
       className="d-flex"
       onSubmit={submitHandler}
       style={{
-        width: "90%",
+        width: "92%",
         backgroundColor: "#f5f8fa",
         marginLeft: "auto",
         marginRight: "auto",
