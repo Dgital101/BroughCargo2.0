@@ -30,6 +30,7 @@ import NewProductScreen from "./screens/NewProductScreen";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import SearchBox from "./components/SearchBox";
+import SearchScreen from "./screens/SearchScreen";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -287,6 +288,7 @@ function App() {
                 <Route path="/cart" element={<CartScreen />} />
                 <Route path="/signin" element={<SigninScreen />} />
                 <Route path="/signup" element={<SignupScreen />} />
+                <Route path="/search" element={<SearchScreen />} />
                 <Route path="/shipping" element={<ShippingScreen />} />
                 <Route path="/payment" element={<PaymentMethodScreen />} />
                 <Route path="/placeorder" element={<PlaceOrderScreen />} />
