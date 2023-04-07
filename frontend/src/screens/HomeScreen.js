@@ -60,7 +60,12 @@ function HomeScreen() {
       <Container className="d-flex full-width justify-content-between align-items-center mb-3 mt-4">
         {data.products.map((product) => (
           <div className="cate" key={product.name}>
-            <a href={`/product/${product.slug}`}>
+            <a
+              href={`/product/${product.slug}`}
+              style={{
+                marginRight: "2rem",
+              }}
+            >
               <img src={product.Image} alt={product.name} />
             </a>
 
@@ -71,7 +76,6 @@ function HomeScreen() {
                 color: "#000",
                 fontWeight: "bold",
                 marginRight: "2rem",
-                marginLeft: "2rem",
               }}
               className="mt-2"
             >
