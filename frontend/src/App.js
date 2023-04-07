@@ -44,7 +44,6 @@ function App() {
     localStorage.removeItem("cartItems");
     localStorage.removeItem("shippingAddress");
     localStorage.removeItem("paymentMethod");
-    Navigate("/");
   };
 
   const tog = () => {
