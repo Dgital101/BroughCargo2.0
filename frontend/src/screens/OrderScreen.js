@@ -14,7 +14,6 @@ import { Store } from "../Store";
 import { getError } from "../utils";
 import { Button } from "react-bootstrap";
 import { toast } from "react-toastify";
-import PaymentForm from "../components/Payment";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -214,32 +213,7 @@ export default function OrderScreen() {
                     </Col>
                   </Row>
                 </ListGroup.Item>
-                {!order.isPaid && (
-                  <ListGroup.Item>
-                    <form onSubmit={handleSubmit}>
-                      <label>
-                        Amount:
-                        <input
-                          type="number"
-                          value={order.itemsPrice.toFixed(2)}
-                          onChange={(e) =>
-                            setAmount(order.itemsPrice.toFixed(2))
-                          }
-                        />
-                      </label>
-                      <label>
-                        Reference:
-                        <input
-                          type="text"
-                          value={order._id}
-                          onChange={(e) => setReference(order._id)}
-                        />
-                      </label>
-
-                      <button type="submit">Pay with PayFast</button>
-                    </form>
-                  </ListGroup.Item>
-                )}
+                {!order.isPaid && <ListGroup.Item>Pay Now</ListGroup.Item>}
 
                 {userInfo.isAdmin && !order.isPaid && !order.isDelivered && (
                   <ListGroup.Item>
