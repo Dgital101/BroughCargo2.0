@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HomeScreen from "./screens/HomeScreen";
@@ -44,6 +44,7 @@ function App() {
     localStorage.removeItem("cartItems");
     localStorage.removeItem("shippingAddress");
     localStorage.removeItem("paymentMethod");
+    Navigate("/");
   };
 
   const tog = () => {
@@ -85,7 +86,6 @@ function App() {
                     alt="image description"
                     className="img-fluid rounded-circle"
                   />
-
                   <h3
                     className="text-light mb-3 d-flex justify-content-center"
                     style={{
@@ -95,45 +95,57 @@ function App() {
                   >
                     {userInfo ? <>Hello {userInfo.name}</> : <>Hello Shopper</>}
                   </h3>
-                  <div className="social-links text-center">
-                    <a href="#" className="facebook">
-                      <i className="bx bx-cart"></i>
-                    </a>
-                    <a href="#" className="instagram">
-                      <i className="bx bx-heart "></i>
-                    </a>
-                    <a href="#" className="google-plus">
-                      <i className="bx bx-bell"></i>
-                    </a>
-                    <a href="#" className="linkedin">
-                      <i className="bx bx-current-location"></i>
-                    </a>
-                    {userInfo && userInfo.Admin && (
-                      <div>
-                        <a href="#" className="linkedin">
-                          <i className="bx bx-group"></i>
-                        </a>
-                      </div>
-                    )}
-                  </div>
-                </div>
+                  {userInfo && userInfo.isAdmin && (
+                    <div className="social-links d-flex flex-row justify-content-center">
+                      <LinkContainer to="/admin/dashboard">
+                        <div className="d-flex justify-content-center flex-column m-2">
+                          <a href="#" className="instagram">
+                            <i class="bx bx-pie-chart-alt-2"></i>
+                          </a>
+                          <p style={{ fontSize: "10px", fontWeight: "bold" }}>
+                            Dashboard
+                          </p>
+                        </div>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/products">
+                        <div className="d-flex justify-content-center flex-column m-2">
+                          <a href="#" className="instagram">
+                            <i class="bx bxs-shopping-bags"></i>
+                          </a>
+                          <p style={{ fontSize: "10px", fontWeight: "bold" }}>
+                            Products
+                          </p>
+                        </div>
+                      </LinkContainer>
 
-                {userInfo && userInfo.isAdmin && (
-                  <NavDropdown title="Admin" id="admin-nav-dropdown">
-                    <LinkContainer to="/admin/dashboard">
-                      <NavDropdown.Item>Dashboard</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/admin/products">
-                      <NavDropdown.Item>Products</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/admin/orders">
-                      <NavDropdown.Item>Orders</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/admin/users">
-                      <NavDropdown.Item>Users</NavDropdown.Item>
-                    </LinkContainer>
-                  </NavDropdown>
-                )}
+                      <LinkContainer to="/admin/orders">
+                        <div className="d-flex justify-content-center flex-column m-2">
+                          <a href="#" className="google-plus">
+                            <i class="bx bx-receipt"></i>
+                          </a>
+                          <p style={{ fontSize: "10px", fontWeight: "bold" }}>
+                            Orders
+                          </p>
+                        </div>
+                      </LinkContainer>
+
+                      <LinkContainer to="/admin/users">
+                        <div className="d-flex justify-content-center flex-column m-2">
+                          <a href="#" className="linkedin">
+                            <i className="bx bx-group"></i>
+                          </a>
+                          <p style={{ fontSize: "10px", fontWeight: "bold" }}>
+                            Users
+                          </p>
+                        </div>
+                      </LinkContainer>
+                    </div>
+                  )}
+                  <Container style={{ color: "gray" }}>
+                    {" "}
+                    Buyer Information View
+                  </Container>
+                </div>
 
                 <nav id="navbar" className="nav-menu navbar">
                   <ul>
@@ -193,7 +205,7 @@ function App() {
                       {userInfo ? (
                         <Link
                           className="dropdown-item"
-                          to="#signout"
+                          to="/signout"
                           onClick={signoutHandler}
                         >
                           <i
