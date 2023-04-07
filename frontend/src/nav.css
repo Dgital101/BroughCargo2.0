@@ -175,7 +175,7 @@ h6 {
 /* Mobile Navigation */
 .mobile-nav-toggle {
   position: fixed;
-  right: 1rem;
+  right: 0;
   top: 15px;
   z-index: 9998;
   border: 0;
