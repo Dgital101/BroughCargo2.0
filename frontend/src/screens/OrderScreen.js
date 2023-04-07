@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 import { PayPalButtuns, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { Helmet } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
@@ -14,6 +14,7 @@ import { Store } from "../Store";
 import { getError } from "../utils";
 import { Button } from "react-bootstrap";
 import { toast } from "react-toastify";
+import PaymentForm from "../components/Payment";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -97,6 +98,19 @@ export default function OrderScreen() {
       dispatch({ type: "DELIVER_FAIL" });
     }
   }
+
+  const [amount, setAmount] = useState("");
+  const [reference, setReference] = useState();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const paymentData = {
+      amount,
+      reference,
+    };
+    const response = await axios.post("api/payfast", paymentData);
+    window.location.href = response.data.redirectUrl;
+  };
   return loading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (
@@ -202,7 +216,28 @@ export default function OrderScreen() {
                 </ListGroup.Item>
                 {!order.isPaid && (
                   <ListGroup.Item>
-                    <Button>Pay Now </Button>
+                    <form onSubmit={handleSubmit}>
+                      <label>
+                        Amount:
+                        <input
+                          type="number"
+                          value={order.itemsPrice.toFixed(2)}
+                          onChange={(e) =>
+                            setAmount(order.itemsPrice.toFixed(2))
+                          }
+                        />
+                      </label>
+                      <label>
+                        Reference:
+                        <input
+                          type="text"
+                          value={order._id}
+                          onChange={(e) => setReference(order._id)}
+                        />
+                      </label>
+
+                      <button type="submit">Pay with PayFast</button>
+                    </form>
                   </ListGroup.Item>
                 )}
 

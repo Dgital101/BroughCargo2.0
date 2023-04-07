@@ -23,7 +23,7 @@ productRouter.post(
       category: "sample category",
       brand: "sample brand",
       countInStock: 0,
-      rating: 0,
+      rating: 5,
       numReviews: 75,
       Description: "sample description",
       sellerID: 0,
