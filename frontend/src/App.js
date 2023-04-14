@@ -63,7 +63,7 @@ function App() {
 
   return (
     <BrowserRouter
-      style={{ maxWidth: "100%", marginLeft: "auto" }}
+      style={{ maxWidth: "100%", marginLeft: "auto", overflow: "hidden" }}
       className="d-flex justify-content-center"
     >
       <div
