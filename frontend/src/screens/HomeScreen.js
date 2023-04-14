@@ -51,7 +51,7 @@ function HomeScreen() {
   return (
     <div
       className="d-flex justify-content-center flex-column"
-      // style={{ paddingLeft: "3rem" }}
+      style={{ overflow: "hidden" }}
     >
       <Helmet>
         <title>Hot Picks</title>
