@@ -9,12 +9,12 @@ import { StoreProvider } from "./Store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode style={{ backgroundColor: "#f5f8fa" }}>
+  <React.StrictMode style={{ backgroundColor: "#f5f8fa", overflow: "hidden" }}>
     <StoreProvider>
-      <HelmetProvider style={{ backgroundColor: "#f5f8fa" }}>
-
-        <App style={{ backgroundColor: "#f5f8fa" }} />
-
+      <HelmetProvider
+        style={{ backgroundColor: "#f5f8fa", overflow: "hidden" }}
+      >
+        <App style={{ backgroundColor: "#f5f8fa", overflow: "hidden" }} />
       </HelmetProvider>
     </StoreProvider>
   </React.StrictMode>
