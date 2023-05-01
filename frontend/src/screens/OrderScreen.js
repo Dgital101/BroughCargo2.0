@@ -14,6 +14,7 @@ import { Store } from "../Store";
 import { getError } from "../utils";
 import { Button } from "react-bootstrap";
 import { toast } from "react-toastify";
+import PaymentForm from "../components/PaymentForm";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -213,7 +214,9 @@ export default function OrderScreen() {
                     </Col>
                   </Row>
                 </ListGroup.Item>
-                {!order.isPaid && <ListGroup.Item>Pay Now</ListGroup.Item>}
+                {!order.isPaid && (
+                  <PaymentForm amount={order.itemsPrice.toFixed(2)} />
+                )}
 
                 {userInfo.isAdmin && !order.isPaid && !order.isDelivered && (
                   <ListGroup.Item>
