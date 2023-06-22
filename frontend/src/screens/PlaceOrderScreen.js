@@ -40,7 +40,7 @@ export default function PlaceOrderScreen() {
     cart.cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
   );
   cart.shippingPrice = cart.itemsPrice > 1000 ? round2(0) : round2(50);
-  cart.totalPrice = cart.itemsPrice + cart.shippingPrice;
+  cart.totalPrice = cart.itemsPrice;
   const placeOrderHandler = async () => {
     try {
       dispatch({ type: "CREATE_REQUEST" });
@@ -156,12 +156,7 @@ export default function PlaceOrderScreen() {
                     <Col>R{cart.itemsPrice.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>
-                <ListGroup.Item style={{ backgroundColor: "#e5dbd3" }}>
-                  <Row style={{ backgroundColor: "#e5dbd3" }}>
-                    <Col>Shipping</Col>
-                    <Col>R{cart.shippingPrice.toFixed(2)}</Col>
-                  </Row>
-                </ListGroup.Item>
+
                 <ListGroup.Item style={{ backgroundColor: "#e5dbd3" }}>
                   <Row style={{ backgroundColor: "#e5dbd3" }}>
                     <Col>

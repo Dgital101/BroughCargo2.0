@@ -51,7 +51,7 @@ export default function PaymentMethodScreen() {
         </Card.Header>
         <Card.Body>
           <Form onSubmit={submitHandler}>
-            <div className="mb-3">
+            {/* <div className="mb-3">
               <Form.Check
                 type="radio"
                 id="Cash on Delivery"
@@ -60,7 +60,7 @@ export default function PaymentMethodScreen() {
                 checked={paymentMethodName === "Cash on Delivery"}
                 onChange={(e) => setPaymentMethodName(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="mb-3">
               <Form.Check
                 type="radio"
