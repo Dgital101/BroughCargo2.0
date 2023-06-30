@@ -21,9 +21,7 @@ const TransporterComponent = () => {
 
   return (
     <div className="mt-5">
-      <Container>
-        <TransporterList transporters={transporters} />
-      </Container>
+      <TransporterList transporters={transporters} />
     </div>
   );
 };

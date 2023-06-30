@@ -15,7 +15,7 @@ const TransporterList = ({ transporters }) => {
   return (
     <Row>
       {transporters.map((transporter) => (
-        <Col key={transporter._id} xs={12} sm={6} md={4} lg={3}>
+        <Col key={transporter._id} xs={10} sm={6} md={4} lg={3}>
           <Card className="mb-3">
             <Card.Img
               variant="top"
