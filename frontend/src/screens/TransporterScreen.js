@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import TransporterList from "../components/TransporterList";
 
 const TransporterComponent = () => {
@@ -20,7 +21,9 @@ const TransporterComponent = () => {
 
   return (
     <div className="mt-5">
-      <TransporterList transporters={transporters} />
+      <Container>
+        <TransporterList transporters={transporters} />
+      </Container>
     </div>
   );
 };
