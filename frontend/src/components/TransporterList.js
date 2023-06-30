@@ -13,7 +13,7 @@ import Row from "react-bootstrap/Row";
 
 const TransporterList = ({ transporters }) => {
   return (
-    <Row>
+    <Row className="d-flex justify-content-center ">
       {transporters.map((transporter) => (
         <Col key={transporter._id} xs={10} sm={6} md={4} lg={3}>
           <Card className="mb-3">
@@ -77,6 +77,10 @@ const TransporterList = ({ transporters }) => {
                 </span>
               </Card.Text>
               <Button
+                style={{
+                  backgroundColor: "burlywood",
+                  borderColor: "burlywood",
+                }}
                 variant="success"
                 href={`https://api.whatsapp.com/send?phone=${transporter.phoneNumber}`}
                 target="_blank"
