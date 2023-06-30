@@ -8,6 +8,8 @@ import productRouter from "./routes/productRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import orderRouter from "./routes/orderRoutes.js";
 import uploadRouter from "./routes/uploadRoutes.js";
+import Transporter from "./models/transporterModel.js";
+import transporterRouter from "./routes/transporterRoutes.js";
 
 dotenv.config();
 mongoose
@@ -35,6 +37,7 @@ app.use("/api/products", productRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/paysast", orderRouter);
+app.use("/api/transporters", transporterRouter);
 
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "/frontend/build")));
@@ -44,6 +47,7 @@ app.get("*", (req, res) => {
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
+
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`server at http://localhost:${port}`);

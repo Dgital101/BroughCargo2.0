@@ -34,6 +34,7 @@ import SearchScreen from "./screens/SearchScreen";
 import OrderListScreen from "./screens/OrderListScreen";
 import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
+import TransporterComponent from "./screens/TransporterScreen";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -183,13 +184,15 @@ function App() {
                     </li>
 
                     <li>
-                      <a href="#services" className="nav-link scrollto">
-                        <i
-                          className="bx bx-credit-card"
-                          style={{ fontSize: "1.5rem" }}
-                        ></i>{" "}
-                        <span>Payment Method</span>
-                      </a>
+                      <LinkContainer to="/transporters">
+                        <NavDropdown.Item>
+                          <i
+                            className="bx bxs-truck"
+                            style={{ fontSize: "1.5rem" }}
+                          ></i>{" "}
+                          <span>Transporters</span>
+                        </NavDropdown.Item>
+                      </LinkContainer>
                     </li>
                     <li>
                       <a href="#portfolio" className="nav-link scrollto">
@@ -362,6 +365,10 @@ function App() {
                   }
                 ></Route>
                 <Route path="/" element={<HomeScreen />} />
+                <Route
+                  path="/transporters"
+                  element={<TransporterComponent />}
+                />
               </Routes>
             </main>
           </Col>
