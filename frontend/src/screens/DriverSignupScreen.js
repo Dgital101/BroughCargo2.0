@@ -137,7 +137,9 @@ const DriverSignupPage = () => {
               <Form.Control
                 type="text"
                 value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                onChange={(e) =>
+                  setPhoneNumber(e.target.value.replace(/^0/, "+27"))
+                }
                 style={{
                   backgroundColor: "#D9D9D9",
                   borderRadius: "10px",
