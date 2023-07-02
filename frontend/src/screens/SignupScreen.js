@@ -142,6 +142,9 @@ export default function SignupScreen() {
               Sign Up
             </Button>
           </Form>
+          <div className="mb-3 text-center">
+            <Link to={`/drivers-signup`}>Signup as a transporter</Link>
+          </div>
 
           <div className="mb-3 text-center">
             Already Have an Account?{" "}

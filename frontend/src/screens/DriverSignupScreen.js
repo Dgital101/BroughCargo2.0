@@ -67,7 +67,7 @@ const DriverSignupPage = () => {
             textAlign: "center",
           }}
         >
-          <h5>Driver Sign Up</h5>
+          <h5>Transporter Sign Up</h5>
         </Card.Header>
         <Card.Body>
           <Form onSubmit={submitHandler}>
