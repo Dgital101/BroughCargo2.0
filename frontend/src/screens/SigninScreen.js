@@ -50,7 +50,7 @@ export default function SigninScreen() {
         marginTop: "10%",
       }}
     >
-      <Card style={{ width: "40%" }}>
+      <Card>
         <Card.Header
           style={{
             backgroundColor: "#e5dbd3",

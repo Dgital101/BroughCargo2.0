@@ -56,7 +56,7 @@ export default function SignupScreen() {
       className="d-flex flex-column align-items-center"
       style={{ marginTop: "10%" }}
     >
-      <Card style={{ width: "40%" }}>
+      <Card>
         <Card.Header
           style={{
             backgroundColor: "#e5dbd3",
