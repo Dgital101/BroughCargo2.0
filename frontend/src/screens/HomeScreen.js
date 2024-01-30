@@ -81,13 +81,6 @@ function HomeScreen() {
       </Container>
 
       <Carousel className="mb-5" controls={false}>
-        <Carousel.Item interval={500}>
-          <img
-            className="d-block w-100"
-            src="/images/highlights/2.png"
-            alt="Image Two"
-          />
-        </Carousel.Item>
         <Carousel.Item interval={1500}>
           <img
             className="d-block w-100"
