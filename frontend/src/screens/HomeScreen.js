@@ -61,8 +61,7 @@ function HomeScreen() {
               href={`/product/${product.slug}`}
               style={{
                 marginRight: "2rem",
-              }}
-            >
+              }}>
               <img src={product.Image} alt={product.name} />
             </a>
 
@@ -74,8 +73,7 @@ function HomeScreen() {
                 fontWeight: "bold",
                 marginRight: "2rem",
               }}
-              className="mt-2"
-            >
+              className="mt-2">
               {product.name}
             </div>
           </div>
@@ -83,13 +81,6 @@ function HomeScreen() {
       </Container>
 
       <Carousel className="mb-5" controls={false}>
-        <Carousel.Item interval={1500}>
-          <img
-            className="d-block w-100"
-            src="/images/highlights/1.png"
-            alt="Image One"
-          />
-        </Carousel.Item>
         <Carousel.Item interval={500}>
           <img
             className="d-block w-100"
@@ -129,8 +120,7 @@ function HomeScreen() {
         ) : (
           <Row
             style={{ height: "100px" }}
-            className="d-flex justify-content-center"
-          >
+            className="d-flex justify-content-center">
             {products.map((product) => (
               <Col
                 key={product.slug}
@@ -138,8 +128,7 @@ function HomeScreen() {
                 md={6}
                 lg={3}
                 xs={6}
-                className="mb-3"
-              >
+                className="mb-3">
                 <Product product={product}></Product>
               </Col>
             ))}
