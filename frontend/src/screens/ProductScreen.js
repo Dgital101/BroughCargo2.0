@@ -100,15 +100,12 @@ function ProductScreen() {
                 width: "20rem",
                 marginLeft: "2rem",
               }}
-              className="productCard"
-            >
+              className="productCard">
               <div>{product.name}</div>
               <Rating rating={product.rating} numReviews={product.numReviews} />
               <Card.Subtitle>Description</Card.Subtitle>
               <Card.Text style={{ textAlign: "justify" }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam.
+                {product.Description}
               </Card.Text>
               <Card.Text className="prod-price">R{product.price}</Card.Text>
               {product.countInStock > 0 ? (
@@ -128,8 +125,7 @@ function ProductScreen() {
                   {" "}
                   <i
                     className="fa fa-shopping-cart fa-lg"
-                    aria-hidden="true"
-                  ></i>{" "}
+                    aria-hidden="true"></i>{" "}
                   ADD TO CART{" "}
                 </small>
               </div>
@@ -144,8 +140,7 @@ function ProductScreen() {
         </Row>
       </Container>
       <footer
-        style={{ position: "absolute", left: "0", bottom: "0", right: "0" }}
-      >
+        style={{ position: "absolute", left: "0", bottom: "0", right: "0" }}>
         <div className="text-center">All rights reserved BroughtCargo</div>
       </footer>
     </div>

@@ -154,4 +154,19 @@ transporterRouter.put(
   })
 );
 
+transporterRouter.delete(
+  "/:id",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const transporter = await Transporter.findById(req.params.id);
+    if (transporter) {
+      await transporter.remove();
+      res.send({ message: "Transporter Deleted" });
+    } else {
+      res.status(404).send({ message: "Transporter Not Found" });
+    }
+  })
+);
+
 export default transporterRouter;

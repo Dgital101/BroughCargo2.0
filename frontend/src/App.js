@@ -36,6 +36,7 @@ import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
 import TransporterComponent from "./screens/TransporterScreen";
 import DriverSignupPage from "./screens/DriverSignupScreen";
+import TransporterListScreen from "./screens/TransporterListScreen";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -66,20 +67,17 @@ function App() {
   return (
     <BrowserRouter
       style={{ maxWidth: "100%", marginLeft: "auto", overflow: "hidden" }}
-      className="d-flex justify-content-center"
-    >
+      className="d-flex justify-content-center">
       <div
         className="d-flex flex-column tog"
-        style={{ maxWidth: "100%", marginLeft: "auto" }}
-      >
+        style={{ maxWidth: "100%", marginLeft: "auto" }}>
         <ToastContainer position="bottom-center" limit={1} />
 
         <Row style={{ paddingRight: "0rem" }} className="no-gutters">
           <Col md={4} className="no-gutters">
             <header
               id="header"
-              style={{ minHeight: "100%", marginRight: "0rem" }}
-            >
+              style={{ minHeight: "100%", marginRight: "0rem" }}>
               <div className="d-flex flex-column">
                 <div className="profile">
                   <img
@@ -92,8 +90,7 @@ function App() {
                     style={{
                       fontSize: "1.5rem",
                       marginBottom: "1rem",
-                    }}
-                  >
+                    }}>
                     {userInfo ? <>Hello {userInfo.name}</> : <>Hello Shopper</>}
                   </h3>
                   {userInfo && userInfo.isAdmin && (
@@ -101,17 +98,18 @@ function App() {
                       <LinkContainer to="/admin/dashboard">
                         <div className="d-flex justify-content-center flex-column m-2">
                           <a href="#" className="instagram">
-                            <i class="bx bx-pie-chart-alt-2"></i>
+                            <i className="bx bx-pie-chart-alt-2"></i>
                           </a>
                           <p style={{ fontSize: "10px", fontWeight: "bold" }}>
                             Dashboard
                           </p>
                         </div>
                       </LinkContainer>
+
                       <LinkContainer to="/admin/products">
                         <div className="d-flex justify-content-center flex-column m-2">
                           <a href="#" className="instagram">
-                            <i class="bx bxs-shopping-bags"></i>
+                            <i className="bx bxs-shopping-bags"></i>
                           </a>
                           <p style={{ fontSize: "10px", fontWeight: "bold" }}>
                             Products
@@ -122,7 +120,7 @@ function App() {
                       <LinkContainer to="/admin/orders">
                         <div className="d-flex justify-content-center flex-column m-2">
                           <a href="#" className="google-plus">
-                            <i class="bx bx-receipt"></i>
+                            <i className="bx bx-receipt"></i>
                           </a>
                           <p style={{ fontSize: "10px", fontWeight: "bold" }}>
                             Orders
@@ -130,13 +128,24 @@ function App() {
                         </div>
                       </LinkContainer>
 
-                      <LinkContainer to="/admin/users">
+                      {/* <LinkContainer to="/admin/users">
                         <div className="d-flex justify-content-center flex-column m-2">
                           <a href="#" className="linkedin">
                             <i className="bx bx-group"></i>
                           </a>
                           <p style={{ fontSize: "10px", fontWeight: "bold" }}>
                             Users
+                          </p>
+                        </div>
+                      </LinkContainer> */}
+
+                      <LinkContainer to="/admin/transporters">
+                        <div className="d-flex justify-content-center flex-column m-2">
+                          <a href="#" className="twitter">
+                            <i className="bx bxs-truck"></i>
+                          </a>
+                          <p style={{ fontSize: "10px", fontWeight: "bold" }}>
+                            Transporters
                           </p>
                         </div>
                       </LinkContainer>
@@ -156,8 +165,7 @@ function App() {
                           {" "}
                           <i
                             className="bx bx-user"
-                            style={{ fontSize: "1.5rem" }}
-                          ></i>
+                            style={{ fontSize: "1.5rem" }}></i>
                           <span>Account Details</span>
                         </NavDropdown.Item>
                       </LinkContainer>
@@ -168,8 +176,7 @@ function App() {
                           {" "}
                           <i
                             className="bx bx-list-ul "
-                            style={{ fontSize: "1.5rem" }}
-                          ></i>{" "}
+                            style={{ fontSize: "1.5rem" }}></i>{" "}
                           <span>Order History</span>
                         </NavDropdown.Item>
                       </LinkContainer>
@@ -178,8 +185,7 @@ function App() {
                       <a href="#resume" className="nav-link scrollto">
                         <i
                           className="bx bx-location-plus"
-                          style={{ fontSize: "1.5rem" }}
-                        ></i>{" "}
+                          style={{ fontSize: "1.5rem" }}></i>{" "}
                         <span>Saved Location</span>
                       </a>
                     </li>
@@ -189,8 +195,7 @@ function App() {
                         <NavDropdown.Item>
                           <i
                             className="bx bxs-truck"
-                            style={{ fontSize: "1.5rem" }}
-                          ></i>{" "}
+                            style={{ fontSize: "1.5rem" }}></i>{" "}
                           <span>Transporters</span>
                         </NavDropdown.Item>
                       </LinkContainer>
@@ -199,8 +204,7 @@ function App() {
                       <a href="#portfolio" className="nav-link scrollto">
                         <i
                           className="bx bx-headphone"
-                          style={{ fontSize: "1.5rem" }}
-                        ></i>{" "}
+                          style={{ fontSize: "1.5rem" }}></i>{" "}
                         <span>Help Centre</span>
                       </a>
                     </li>
@@ -209,20 +213,17 @@ function App() {
                         <Link
                           className="dropdown-item"
                           to="/signout"
-                          onClick={signoutHandler}
-                        >
+                          onClick={signoutHandler}>
                           <i
                             className="bx bx-log-out"
-                            style={{ fontSize: "1.5rem" }}
-                          ></i>{" "}
+                            style={{ fontSize: "1.5rem" }}></i>{" "}
                           <span>Sign Out</span>
                         </Link>
                       ) : (
                         <Link className="dropdown-item" to="/signin">
                           <i
                             className="bx bx-log-in"
-                            style={{ fontSize: "1.5rem" }}
-                          ></i>{" "}
+                            style={{ fontSize: "1.5rem" }}></i>{" "}
                           <span>Sign In</span>
                         </Link>
                       )}
@@ -238,19 +239,16 @@ function App() {
               <div className="mb-3 ">
                 <i
                   className="bx bx-menu mobile-nav-toggle d-md-none"
-                  onClick={tog}
-                ></i>
+                  onClick={tog}></i>
               </div>
 
               <Container
                 className="d-flex flex-row mt-1 "
-                style={{ marginLeft: "0rem" }}
-              >
+                style={{ marginLeft: "0rem" }}>
                 <LinkContainer
                   to="/cart"
                   className="d-flex cart-badge-container"
-                  style={{ marginTop: "1rem", cursor: "pointer" }}
-                >
+                  style={{ marginTop: "1rem", cursor: "pointer" }}>
                   <div>
                     <i
                       className="fa fa-shopping-cart fa-lg"
@@ -259,24 +257,21 @@ function App() {
                         fontWeight: "bold",
                         color: "black",
                         fontSize: "40px",
-                      }}
-                    ></i>
+                      }}></i>
 
                     {cart.cartItems.length >= 0 && (
                       <span
                         style={{
                           transform: "translate(-1.5rem)",
                           paddingLeft: "0rem",
-                        }}
-                      >
+                        }}>
                         <Badge
                           pill
                           bg="danger"
                           className="mx-2"
                           style={{
                             transform: "translateY(-1rem)",
-                          }}
-                        >
+                          }}>
                           {cart.cartItems.length}
                         </Badge>
                       </span>
@@ -286,8 +281,7 @@ function App() {
                 <LinkContainer
                   to="/"
                   style={{ order: -1 }}
-                  className="logoCont"
-                >
+                  className="logoCont">
                   <Navbar.Brand>
                     <img
                       src="/images/logo.png"
@@ -314,8 +308,7 @@ function App() {
                 <Route path="/profile" element={<ProfileScreen />} />
                 <Route
                   path="/orderhistory"
-                  element={<OrderHistoryScreen />}
-                ></Route>
+                  element={<OrderHistoryScreen />}></Route>
                 <Route path="/order/:id" element={<OrderScreen />}></Route>
                 <Route
                   path="admin/dashboard"
@@ -333,22 +326,29 @@ function App() {
                     </AdminRoute>
                   }
                 />
+
+                <Route
+                  path="admin/transporters"
+                  element={
+                    <AdminRoute>
+                      <TransporterListScreen />
+                    </AdminRoute>
+                  }
+                />
                 <Route
                   path="/admin/product/:id"
                   element={
                     <AdminRoute>
                       <ProductEditScreen />
                     </AdminRoute>
-                  }
-                ></Route>
+                  }></Route>
                 <Route
                   path="/admin/orders"
                   element={
                     <AdminRoute>
                       <OrderListScreen />
                     </AdminRoute>
-                  }
-                ></Route>
+                  }></Route>
 
                 <Route
                   path="/admin/users"
@@ -356,16 +356,14 @@ function App() {
                     <AdminRoute>
                       <UserListScreen />
                     </AdminRoute>
-                  }
-                ></Route>
+                  }></Route>
                 <Route
                   path="/admin/user/:id"
                   element={
                     <AdminRoute>
                       <UserEditScreen />
                     </AdminRoute>
-                  }
-                ></Route>
+                  }></Route>
                 <Route path="/" element={<HomeScreen />} />
                 <Route
                   path="/transporters"

@@ -77,8 +77,7 @@ function NewProductScreen() {
   return (
     <Container
       className="d-flex justify-content-center flex-column"
-      style={{ paddingLeft: "2rem" }}
-    >
+      style={{ paddingLeft: "2rem" }}>
       {loading ? (
         <div className="d-flex justify-content-center align-items-center">
           <LoadingBox />
@@ -113,19 +112,16 @@ function NewProductScreen() {
                     padding: "1rem",
                     marginBottom: "2rem",
                     width: "20rem",
-                  }}
-                >
+                  }}>
                   <div>{product.name}</div>
                   <Rating
                     rating={product.rating}
                     numReviews={product.numReviews}
                   />
-                  <div>{product.rating}</div>
+                  {/* <div>{product.rating}</div> */}
                   <Card.Subtitle>Description</Card.Subtitle>
                   <Card.Text style={{ textAlign: "justify" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam.
+                    {product.Description}
                   </Card.Text>
                   <Card.Text className="prod-price">R{product.price}</Card.Text>
                   {product.countInStock > 0 ? (
@@ -145,8 +141,7 @@ function NewProductScreen() {
                       {" "}
                       <i
                         className="fa fa-shopping-cart fa-lg"
-                        aria-hidden="true"
-                      ></i>{" "}
+                        aria-hidden="true"></i>{" "}
                       ADD TO CART{" "}
                     </small>
                   </div>
